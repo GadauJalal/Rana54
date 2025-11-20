@@ -1,5 +1,3 @@
-import { FadeIn } from "./animations/FadeIn";
-import { HeroFade, ScaleFade } from "./animations/FadeIn";
 import { BuyersHero } from "./for-buyers/BuyersHero";
 import { WhyRana54Credits } from "./for-buyers/WhyRana54Credits";
 import { HowItWorksBuyers } from "./for-buyers/HowItWorksBuyers";
@@ -18,59 +16,37 @@ export function ForBuyers() {
       <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
         <div className="space-y-20">
           {/* Hero Section */}
-          <HeroFade>
-            <BuyersHero />
-          </HeroFade>
+          <BuyersHero />
 
           {/* Why Rana54 Credits */}
-          <ScaleFade>
-            <WhyRana54Credits />
-          </ScaleFade>
+          <WhyRana54Credits />
 
           {/* How It Works */}
-          <FadeIn variant="card">
-            <HowItWorksBuyers />
-          </FadeIn>
+          <HowItWorksBuyers />
 
           {/* Data Integrity Snapshot */}
-          <ScaleFade>
-            <DataIntegritySnapshot />
-          </ScaleFade>
+          <DataIntegritySnapshot />
 
           {/* Buyer Tools & Dashboard */}
-          <FadeIn variant="card">
-            <BuyerTools />
-          </FadeIn>
+          <BuyerTools />
 
           {/* Compliance & Standards */}
-          <ScaleFade>
-            <ComplianceStandards />
-          </ScaleFade>
+          <ComplianceStandards />
 
           {/* Social & Economic Impact */}
-          <FadeIn variant="card">
-            <SocialEconomicImpact />
-          </FadeIn>
+          <SocialEconomicImpact />
 
           {/* Testimonials */}
-          <ScaleFade>
-            <BuyerTestimonials />
-          </ScaleFade>
+          <BuyerTestimonials />
 
           {/* FAQ */}
-          <FadeIn variant="body">
-            <BuyersFAQ />
-          </FadeIn>
+          <BuyersFAQ />
 
           {/* Final CTA */}
-          <ScaleFade>
-            <BuyersFinalCTA />
-          </ScaleFade>
+          <BuyersFinalCTA />
 
           {/* African Location Feature */}
-          <ScaleFade delay={0.1}>
-            <AfricanLocationSection />
-          </ScaleFade>
+          <AfricanLocationSection />
         </div>
       </main>
     </div>

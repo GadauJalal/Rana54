@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { Button } from "./ui/button";
-import { ArrowRight, Sparkles, Users, ShoppingCart, Handshake, Building2, Lightbulb, Mail, Leaf, FileText, Target, BookOpen, Menu, X, ChevronDown, Calculator } from "lucide-react";
+import { ArrowRight, Sparkles, Users, ShoppingCart, Handshake, Building2, Lightbulb, Mail, Leaf, FileText, Target, BookOpen, Menu, X, ChevronDown } from "lucide-react";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -10,12 +10,10 @@ import {
 import { Sheet, SheetContent, SheetTrigger, SheetTitle, SheetDescription } from "./ui/sheet";
 import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "./ui/collapsible";
 import ranaLogo from "figma:asset/70c6d6740bd42316c4c5fea5bc7ba57852ccc0f8.png";
-import { RequestDemoModal } from "./RequestDemoModal";
 
 interface NavbarProps {
   onLogoClick?: () => void;
   onSolutionsClick?: () => void;
-  onSolarCalculatorClick?: () => void;
   onForUsersClick?: () => void;
   onForBuyersClick?: () => void;
   onForPartnersClick?: () => void;
@@ -27,12 +25,12 @@ interface NavbarProps {
   onSDGGoalsClick?: () => void;
   onNewsroomClick?: () => void;
   onResourcesClick?: () => void;
-  currentPage?: string;
 }
 
-export function Navbar({ onLogoClick, onSolutionsClick, onSolarCalculatorClick, onForUsersClick, onForBuyersClick, onForPartnersClick, onAboutClick, onContactClick, onHowItWorksClick, onCO2SaveClick, onCaseStudiesClick, onSDGGoalsClick, onNewsroomClick, onResourcesClick, currentPage }: NavbarProps) {
+export function Navbar({ onLogoClick, onSolutionsClick, onForUsersClick, onForBuyersClick, onForPartnersClick, onAboutClick, onContactClick, onHowItWorksClick, onCO2SaveClick, onCaseStudiesClick, onSDGGoalsClick, onNewsroomClick, onResourcesClick }: NavbarProps) {
   const [scrolled, setScrolled] = useState(false);
-  const [activeItem, setActiveItem] = useState("Solutions");
+  const [activeItem, setActiveItem] = useState<string | null>(null);
+
   const [solutionsOpen, setSolutionsOpen] = useState(false);
   const [companyOpen, setCompanyOpen] = useState(false);
   const [impactOpen, setImpactOpen] = useState(false);
@@ -40,7 +38,6 @@ export function Navbar({ onLogoClick, onSolutionsClick, onSolarCalculatorClick, 
   const [mobileSolutionsOpen, setMobileSolutionsOpen] = useState(false);
   const [mobileCompanyOpen, setMobileCompanyOpen] = useState(false);
   const [mobileImpactOpen, setMobileImpactOpen] = useState(false);
-  const [demoModalOpen, setDemoModalOpen] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -50,24 +47,6 @@ export function Navbar({ onLogoClick, onSolutionsClick, onSolarCalculatorClick, 
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // Sync activeItem with currentPage
-  useEffect(() => {
-    if (!currentPage) return;
-    
-    // Map pages to their parent menu items
-    if (currentPage === "home" || currentPage === "solutions" || currentPage === "solar-calculator" || currentPage === "for-users" || currentPage === "for-buyers" || currentPage === "for-partners") {
-      setActiveItem("Solutions");
-    } else if (currentPage === "about" || currentPage === "contact" || currentPage === "how-it-works") {
-      setActiveItem("Company");
-    } else if (currentPage === "co2-save" || currentPage === "case-studies" || currentPage === "sdg-goals") {
-      setActiveItem("Impact");
-    } else if (currentPage === "newsroom") {
-      setActiveItem("Newsroom");
-    } else if (currentPage === "resources") {
-      setActiveItem("Resources");
-    }
-  }, [currentPage]);
-  
   const menuItems = ["Solutions", "Company", "Impact", "Newsroom", "Resources"];
   
   const solutionItems = [
@@ -76,13 +55,6 @@ export function Navbar({ onLogoClick, onSolutionsClick, onSolarCalculatorClick, 
       description: "Complete platform capabilities",
       icon: Sparkles,
       href: "#overview",
-      gradient: "from-[#F6B842] to-[#F57B44]"
-    },
-    { 
-      label: "Solar Calculator", 
-      description: "Size systems & model savings",
-      icon: Calculator,
-      href: "#solar-calculator",
       gradient: "from-[#F6B842] to-[#F57B44]"
     },
     { 
@@ -214,11 +186,8 @@ export function Navbar({ onLogoClick, onSolutionsClick, onSolarCalculatorClick, 
                                     key={solution.label}
                                     className="group relative px-5 py-4 rounded-2xl cursor-pointer transition-all duration-300 hover:bg-white/95 focus:bg-white/95 overflow-hidden border border-transparent hover:border-white/20 hover:shadow-[0_8px_30px_-8px_rgba(0,0,0,0.2)]"
                                     onClick={() => {
-                                      setActiveItem("Solutions");
                                       if (solution.label === "Overview" && onSolutionsClick) {
                                         onSolutionsClick();
-                                      } else if (solution.label === "Solar Calculator" && onSolarCalculatorClick) {
-                                        onSolarCalculatorClick();
                                       } else if (solution.label === "For Homeowners" && onForUsersClick) {
                                         onForUsersClick();
                                       } else if (solution.label === "For Businesses" && onForBuyersClick) {
@@ -292,7 +261,6 @@ export function Navbar({ onLogoClick, onSolutionsClick, onSolarCalculatorClick, 
                                     key={company.label}
                                     className="group relative px-5 py-4 rounded-2xl cursor-pointer transition-all duration-300 hover:bg-white/95 focus:bg-white/95 overflow-hidden border border-transparent hover:border-white/20 hover:shadow-[0_8px_30px_-8px_rgba(0,0,0,0.2)]"
                                     onClick={() => {
-                                      setActiveItem("Company");
                                       if (company.label === "About Us" && onAboutClick) {
                                         onAboutClick();
                                       } else if (company.label === "Contact Us" && onContactClick) {
@@ -352,6 +320,7 @@ export function Navbar({ onLogoClick, onSolutionsClick, onSolarCalculatorClick, 
                               {activeItem === item && (
                                 <div className="absolute inset-0 bg-gradient-to-r from-[#527E5F] to-[#3d5d48] rounded-xl shadow-lg" />
                               )}
+                             
                             </button>
                           </DropdownMenuTrigger>
                           <DropdownMenuContent 
@@ -366,7 +335,6 @@ export function Navbar({ onLogoClick, onSolutionsClick, onSolarCalculatorClick, 
                                     key={impact.label}
                                     className="group relative px-5 py-4 rounded-2xl cursor-pointer transition-all duration-300 hover:bg-white/95 focus:bg-white/95 overflow-hidden border border-transparent hover:border-white/20 hover:shadow-[0_8px_30px_-8px_rgba(0,0,0,0.2)]"
                                     onClick={() => {
-                                      setActiveItem("Impact");
                                       if (impact.label === "CO2 Savings" && onCO2SaveClick) {
                                         onCO2SaveClick();
                                       } else if (impact.label === "Case Studies" && onCaseStudiesClick) {
@@ -409,48 +377,47 @@ export function Navbar({ onLogoClick, onSolutionsClick, onSolarCalculatorClick, 
                     }
                     
                     return (
-                      <button
-                        key={item}
-                        onClick={() => {
-                          setActiveItem(item);
-                          if (item === "Newsroom" && onNewsroomClick) {
-                            onNewsroomClick();
-                          } else if (item === "Resources" && onResourcesClick) {
-                            onResourcesClick();
-                          }
-                        }}
-                        className="relative px-5 py-2.5 rounded-xl transition-all duration-300"
-                      >
-                        <span className={`relative z-10 tracking-wide transition-colors ${
-                          activeItem === item
-                            ? "text-white"
-                            : "text-gray-600 hover:text-gray-900"
-                        }`}>
-                          {item}
-                        </span>
-                        {activeItem === item && (
-                          <div className="absolute inset-0 bg-gradient-to-r from-[#527E5F] to-[#3d5d48] rounded-xl shadow-lg" />
-                        )}
-                      </button>
-                    );
-                  })}
+  <button
+    key={item}
+    onClick={() => {
+      if (item === "Newsroom" && onNewsroomClick) {
+        onNewsroomClick();
+      } else if (item === "Resources" && onResourcesClick) {
+        onResourcesClick();
+      }
+      setActiveItem(item);
+    }}
+    className={`relative px-5 py-2.5 rounded-xl transition-all duration-300 ${
+      activeItem === item
+        ? "border-2 border-transparent bg-white/5 before:absolute before:inset-0 before:rounded-xl before:p-[1.5px] before:bg-gradient-to-r before:from-[#527E5F] before:to-[#3d5d48] before:-z-10 before:content-['']"
+        : "hover:bg-gray-50"
+    }`}
+  >
+    <span
+      className={`relative z-10 tracking-wide transition-colors ${
+        activeItem === item
+          ? "text-[#3d5d48]"
+          : "text-gray-600 hover:text-gray-900"
+      }`}
+    >
+      {item}
+    </span>
+  </button>
+);
+                  })} 
                 </div>
               </div>
             </div>
 
             {/* Desktop CTA button */}
             <div className="hidden lg:flex items-center">
-              <Button 
-                onClick={() => setDemoModalOpen(true)}
-                className="relative overflow-hidden bg-gradient-to-r from-[#F57B44] to-[#e06a33] hover:from-[#e06a33] hover:to-[#F57B44] text-white px-8 py-6 rounded-xl shadow-lg hover:shadow-[0_12px_28px_-8px_rgba(245,123,68,0.5)] transition-all duration-300 group"
-              >
+              <Button className="relative overflow-hidden bg-gradient-to-r from-[#F57B44] to-[#e06a33] hover:from-[#e06a33] hover:to-[#F57B44] text-white px-8 py-6 rounded-xl shadow-lg hover:shadow-[0_12px_28px_-8px_rgba(245,123,68,0.5)] transition-all duration-300 group">
                 <span className="absolute inset-0 bg-white/20 transform scale-x-0 group-hover:scale-x-100 transition-transform origin-left duration-300" />
                 <span className="relative flex items-center gap-2">
                   Request a Demo
                   <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" strokeWidth={2.5} />
                 </span>
               </Button>
-              <RequestDemoModal open={demoModalOpen} onOpenChange={setDemoModalOpen} />
             </div>
 
             {/* Mobile menu button */}
@@ -519,8 +486,6 @@ export function Navbar({ onLogoClick, onSolutionsClick, onSolarCalculatorClick, 
                                 onClick={() => {
                                   if (solution.label === "Overview" && onSolutionsClick) {
                                     onSolutionsClick();
-                                  } else if (solution.label === "Solar Calculator" && onSolarCalculatorClick) {
-                                    onSolarCalculatorClick();
                                   } else if (solution.label === "For Homeowners" && onForUsersClick) {
                                     onForUsersClick();
                                   } else if (solution.label === "For Businesses" && onForBuyersClick) {
@@ -669,13 +634,7 @@ export function Navbar({ onLogoClick, onSolutionsClick, onSolarCalculatorClick, 
 
                     {/* Premium Mobile CTA */}
                     <div className="relative p-6 mt-4 border-t border-white/10">
-                      <Button 
-                        onClick={() => {
-                          setDemoModalOpen(true);
-                          setMobileMenuOpen(false);
-                        }}
-                        className="relative w-full overflow-hidden bg-white hover:bg-white/95 text-[#527E5F] py-6 rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-300 group"
-                      >
+                      <Button className="relative w-full overflow-hidden bg-white hover:bg-white/95 text-[#527E5F] py-6 rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-300 group">
                         <div className="absolute inset-0 bg-gradient-to-r from-[#F6B842]/10 to-[#F57B44]/10 transform scale-x-0 group-hover:scale-x-100 transition-transform origin-left duration-300" />
                         <span className="relative flex items-center justify-center gap-2 tracking-wide">
                           Request a Demo
