@@ -2,22 +2,7 @@ import { useState } from "react";
 import { FadeIn } from "./components/animations/FadeIn";
 import { HeroFade, ScaleFade, FadeInStagger, FadeInStaggerItem, ZoomReveal, SlideReveal } from "./components/animations/FadeIn";
 import { Navbar } from "./components/Navbar";
-<<<<<<< HEAD
 import { Footer } from "./components/Footer";
-=======
-import { SolutionsOverview } from "./components/SolutionsOverview";
-import { ForUsers } from "./components/ForUsers";
-import { ForBuyers } from "./components/ForBuyers";
-import { ForPartners } from "./components/ForPartners";
-import { AboutUs } from "./components/AboutUs";
-import { ContactUs } from "./components/ContactUs";
-import { HowItWorksPage } from "./components/HowItWorksPage";
-import { CO2SavePage } from "./components/CO2SavePage";
-import { CaseStudiesPage } from "./components/CaseStudiesPage";
-import { SDGGoalsPage } from "./components/SDGGoalsPage";
-import { NewsroomPage } from "./components/NewsroomPage";
-import { ResourcesPage } from "./components/ResourcesPage";
->>>>>>> 44c5f9ad2e073682d7ae802c87753b5744b76428
 import { HeroCard } from "./components/bento/HeroCard";
 import { TrustedBySection } from "./components/bento/TrustedBySection";
 import { FeatureCards } from "./components/bento/FeatureCards";
