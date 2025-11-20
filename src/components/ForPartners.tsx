@@ -1,3 +1,5 @@
+import { FadeIn } from "./animations/FadeIn";
+import { HeroFade, ScaleFade } from "./animations/FadeIn";
 import { PartnersHero } from "./for-partners/PartnersHero";
 import { WhyPartner } from "./for-partners/WhyPartner";
 import { PartnerTypes } from "./for-partners/PartnerTypes";
@@ -15,34 +17,54 @@ export function ForPartners() {
       <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
         <div className="space-y-20">
           {/* Hero Section */}
-          <PartnersHero />
+          <HeroFade>
+            <PartnersHero />
+          </HeroFade>
 
           {/* Why Partner With Rana54 */}
-          <WhyPartner />
+          <ScaleFade>
+            <WhyPartner />
+          </ScaleFade>
 
           {/* Partner Types */}
-          <PartnerTypes />
+          <FadeIn variant="card">
+            <PartnerTypes />
+          </FadeIn>
 
           {/* How Partnership Works */}
-          <HowPartnershipWorks />
+          <ScaleFade>
+            <HowPartnershipWorks />
+          </ScaleFade>
 
           {/* Tools & Support */}
-          <ToolsSupport />
+          <FadeIn variant="card">
+            <ToolsSupport />
+          </FadeIn>
 
           {/* Impact Snapshot */}
-          <ImpactSnapshot />
+          <ScaleFade>
+            <ImpactSnapshot />
+          </ScaleFade>
 
           {/* Testimonials */}
-          <PartnerTestimonials />
+          <FadeIn variant="card">
+            <PartnerTestimonials />
+          </FadeIn>
 
           {/* FAQ */}
-          <PartnersFAQ />
+          <FadeIn variant="body">
+            <PartnersFAQ />
+          </FadeIn>
 
           {/* Final CTA */}
-          <PartnersFinalCTA />
+          <ScaleFade>
+            <PartnersFinalCTA />
+          </ScaleFade>
 
           {/* African Location Feature */}
-          <AfricanLocationSection />
+          <ScaleFade delay={0.1}>
+            <AfricanLocationSection />
+          </ScaleFade>
         </div>
       </main>
     </div>

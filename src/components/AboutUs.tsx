@@ -1,3 +1,5 @@
+import { FadeIn } from "./animations/FadeIn";
+import { HeroFade, ScaleFade } from "./animations/FadeIn";
 import { OurStory } from "./about/OurStory";
 import { MissionVision } from "./about/MissionVision";
 import { OurValues } from "./about/OurValues";
@@ -11,22 +13,34 @@ export function AboutUs() {
       <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
         <div className="space-y-20">
           {/* Our Story */}
-          <OurStory />
+          <HeroFade>
+            <OurStory />
+          </HeroFade>
 
           {/* Mission & Vision */}
-          <MissionVision />
+          <ScaleFade>
+            <MissionVision />
+          </ScaleFade>
 
           {/* Our Values */}
-          <OurValues />
+          <FadeIn variant="card">
+            <OurValues />
+          </FadeIn>
 
           {/* The Team */}
-          <TheTeam />
+          <ScaleFade>
+            <TheTeam />
+          </ScaleFade>
 
           {/* Final CTA */}
-          <AboutFinalCTA />
+          <FadeIn variant="card">
+            <AboutFinalCTA />
+          </FadeIn>
 
           {/* African Location Feature */}
-          <AfricanLocationSection />
+          <ScaleFade delay={0.1}>
+            <AfricanLocationSection />
+          </ScaleFade>
         </div>
       </main>
     </div>

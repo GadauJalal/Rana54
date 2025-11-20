@@ -1,6 +1,16 @@
 import { Newspaper, Calendar, ArrowRight, Tag } from "lucide-react";
 
-export function NewsroomHero() {
+const featuredStory = {
+  icon: Newspaper,
+  tag: "Funding",
+  headline: "Rana54 Secures $12M Series A to Scale Clean Energy Verification",
+  dek: "Investment led by Climate Impact Partners will accelerate deployment of verified clean energy tracking across 8 African nations, empowering 100,000+ households.",
+  date: "October 15, 2025",
+  readTime: "6 min read",
+  color: "bg-[#527E5F]",
+};
+
+export function NewsroomHero({ onReadClick }: { onReadClick?: (post: any) => void }) {
   return (
     <section>
       {/* Title + Purpose */}
@@ -41,26 +51,29 @@ export function NewsroomHero() {
             <div className="flex items-center gap-4 mb-6">
               <span className="flex items-center gap-2 px-3 py-1 bg-[#527E5F]/10 text-[#527E5F] rounded-full text-sm">
                 <Tag className="w-3.5 h-3.5" />
-                Funding
+                {featuredStory.tag}
               </span>
               <span className="flex items-center gap-2 text-gray-500 text-sm">
                 <Calendar className="w-4 h-4" />
-                October 15, 2025
+                {featuredStory.date}
               </span>
             </div>
 
             {/* Headline */}
             <h2 className="text-4xl text-gray-900 mb-6 tracking-tight leading-tight">
-              Rana54 Secures $12M Series A to Scale Clean Energy Verification
+              {featuredStory.headline}
             </h2>
 
             {/* 2-line dek */}
             <p className="text-xl text-gray-600 leading-relaxed mb-8">
-              Investment led by Climate Impact Partners will accelerate deployment of verified clean energy tracking across 8 African nations, empowering 100,000+ households.
+              {featuredStory.dek}
             </p>
 
             {/* CTA */}
-            <button className="self-start px-8 py-4 bg-[#527E5F] text-white rounded-xl shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300 flex items-center gap-3 group/btn">
+            <button 
+              onClick={() => onReadClick?.(featuredStory)}
+              className="self-start px-8 py-4 bg-[#527E5F] text-white rounded-xl shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300 flex items-center gap-3 group/btn"
+            >
               <span className="tracking-wide">Read Full Story</span>
               <ArrowRight className="w-5 h-5 group-hover/btn:translate-x-1 transition-transform" />
             </button>

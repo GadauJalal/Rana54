@@ -199,3 +199,41 @@
 html {
   font-size: var(--font-size);
 }
+
+/* Apple-style animation enhancements */
+@layer utilities {
+  /* Hardware acceleration for smoother animations */
+  .will-change-transform {
+    will-change: transform;
+  }
+  
+  .will-change-opacity {
+    will-change: opacity;
+  }
+  
+  .hardware-accelerate {
+    transform: translateZ(0);
+    backface-visibility: hidden;
+    perspective: 1000px;
+  }
+  
+  /* Smooth scrolling with Apple-like momentum */
+  .smooth-scroll {
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
+  }
+  
+  /* Premium blur backdrop */
+  .backdrop-blur-premium {
+    backdrop-filter: blur(20px) saturate(180%);
+    -webkit-backdrop-filter: blur(20px) saturate(180%);
+  }
+}
+
+/* Apply hardware acceleration to animated elements */
+@layer base {
+  [class*="motion-"] {
+    transform: translateZ(0);
+    backface-visibility: hidden;
+  }
+}

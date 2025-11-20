@@ -81,7 +81,7 @@ export function TrustedBySection() {
         </div>
       </div>
 
-      <style jsx>{`
+      <style>{`
         @keyframes scroll-infinite {
           0% {
             transform: translateX(0);

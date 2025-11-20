@@ -1,3 +1,5 @@
+import { FadeIn } from "./animations/FadeIn";
+import { HeroFade, ScaleFade } from "./animations/FadeIn";
 import { HowItWorksHero } from "./how-it-works/HowItWorksHero";
 import { StepRanaMeter } from "./how-it-works/StepRanaMeter";
 import { StepRanaOS } from "./how-it-works/StepRanaOS";
@@ -12,25 +14,39 @@ export function HowItWorksPage() {
       <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
         <div className="space-y-24">
           {/* Hero */}
-          <HowItWorksHero />
+          <HeroFade>
+            <HowItWorksHero />
+          </HeroFade>
 
           {/* Step 1: RanaMeter */}
-          <StepRanaMeter />
+          <ScaleFade>
+            <StepRanaMeter />
+          </ScaleFade>
 
           {/* Step 2: RanaOS */}
-          <StepRanaOS />
+          <FadeIn variant="card">
+            <StepRanaOS />
+          </FadeIn>
 
           {/* Step 3: RanaID */}
-          <StepRanaID />
+          <ScaleFade>
+            <StepRanaID />
+          </ScaleFade>
 
           {/* Step 4: RanaPay */}
-          <StepRanaPay />
+          <FadeIn variant="card">
+            <StepRanaPay />
+          </FadeIn>
 
           {/* Integrated Flow */}
-          <IntegratedFlow />
+          <ScaleFade>
+            <IntegratedFlow />
+          </ScaleFade>
 
           {/* African Location Feature */}
-          <AfricanLocationSection />
+          <ScaleFade delay={0.1}>
+            <AfricanLocationSection />
+          </ScaleFade>
         </div>
       </main>
     </div>
