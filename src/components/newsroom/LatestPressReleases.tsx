@@ -76,7 +76,7 @@ export function LatestPressReleases({ onReadClick }: { onReadClick?: (post: any)
       </div>
 
       {/* Responsive 3-column grid */}
-      <div className="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6  mx-auto">
+      <div className="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-6  mx-auto">
         {pressReleases.map((release, index) => {
           const Icon = release.icon;
           return (
