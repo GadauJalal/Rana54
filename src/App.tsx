@@ -7,8 +7,11 @@ import { ForPartners } from "./components/ForPartners";
 import { AboutUs } from "./components/AboutUs";
 import { ContactUs } from "./components/ContactUs";
 import { HowItWorksPage } from "./components/HowItWorksPage";
-
-
+import { CO2SavePage } from "./components/CO2SavePage";
+import { CaseStudiesPage } from "./components/CaseStudiesPage";
+import { SDGGoalsPage } from "./components/SDGGoalsPage";
+import { NewsroomPage } from "./components/NewsroomPage";
+import { ResourcesPage } from "./components/ResourcesPage";
 import { HeroCard } from "./components/bento/HeroCard";
 import { TrustedBySection } from "./components/bento/TrustedBySection";
 import { FeatureCards } from "./components/bento/FeatureCards";
