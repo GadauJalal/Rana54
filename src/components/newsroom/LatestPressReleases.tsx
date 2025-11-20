@@ -62,10 +62,10 @@ export function LatestPressReleases({ onReadClick }: { onReadClick?: (post: any)
     <section>
       <div className="flex items-center justify-between mb-12">
         <div>
-          <h2 className="text-4xl mb-2 tracking-tight text-gray-900">
+          <h2 className="text-3xl md:text-4xl mb-2 tracking-tight text-gray-900">
             Latest Press Releases
           </h2>
-          <p className="text-lg text-gray-600">
+          <p className="text-base md:text-lg text-gray-600">
             Official announcements and updates
           </p>
         </div>
@@ -76,18 +76,18 @@ export function LatestPressReleases({ onReadClick }: { onReadClick?: (post: any)
       </div>
 
       {/* Responsive 3-column grid */}
-      <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+      <div className="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6  mx-auto">
         {pressReleases.map((release, index) => {
           const Icon = release.icon;
           return (
             <article
               key={index}
               onClick={() => onReadClick?.(release)}
-              className="group bg-white rounded-3xl overflow-hidden border border-gray-200 shadow-[0_8px_30px_-8px_rgba(0,0,0,0.12)] hover:shadow-[0_20px_50px_-15px_rgba(0,0,0,0.2)] transition-all duration-500 hover:scale-[1.02] cursor-pointer"
+              className="group bg-white rounded-3xl overflow-hidden border border-gray-200 shadow-[0_8px_30px_-8px_rgba(0,0,0,0.12)] hover:shadow-[0_20px_50px_-15px_rgba(0,0,0,0.2)] transition-all duration-500 hover:scale-[1.02] max-w-6l cursor-pointer"
             >
               {/* Image/Video thumb */}
-              <div className={`h-56 ${release.color} flex items-center justify-center relative overflow-hidden`}>
-                <Icon className="w-24 h-24 text-white/30" />
+              <div className={`h-48 md:h-56 ${release.color} flex items-center justify-center relative overflow-hidden`}>
+                <Icon className="w-16 h-16 md:w-20 md:h-20 text-white/30" />
                 <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors duration-500"></div>
               </div>
 
@@ -102,12 +102,12 @@ export function LatestPressReleases({ onReadClick }: { onReadClick?: (post: any)
                 </div>
 
                 {/* Headline */}
-                <h3 className="text-xl text-gray-900 mb-3 tracking-tight leading-tight group-hover:text-[#527E5F] transition-colors duration-500">
+                <h3 className="text-lg md:text-xl text-gray-900 mb-3 tracking-tight leading-tight group-hover:text-[#527E5F] transition-colors duration-500">
                   {release.headline}
                 </h3>
 
                 {/* 2-line dek */}
-                <p className="text-gray-600 leading-relaxed mb-4 line-clamp-2">
+                <p className="text-sm md:text-base text-gray-600 leading-relaxed mb-4 line-clamp-2">
                   {release.dek}
                 </p>
 
