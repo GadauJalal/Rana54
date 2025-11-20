@@ -1,3 +1,5 @@
+import { FadeIn } from "./animations/FadeIn";
+import { HeroFade, ScaleFade } from "./animations/FadeIn";
 import { UsersHero } from "./for-users/UsersHero";
 import { QuickBenefits } from "./for-users/QuickBenefits";
 import { HowItWorksUsers } from "./for-users/HowItWorksUsers";
@@ -6,8 +8,8 @@ import { AppFeatures } from "./for-users/AppFeatures";
 import { GettingStarted } from "./for-users/GettingStarted";
 import { HardwareInstall } from "./for-users/HardwareInstall";
 import { PrivacyControl } from "./for-users/PrivacyControl";
-import { SupportFAQ } from "./for-users/SupportFAQ";
 import { SocialProof } from "./for-users/SocialProof";
+import { SupportFAQ } from "./for-users/SupportFAQ";
 import { FinalCTA } from "./for-users/FinalCTA";
 import { AfricanLocationSection } from "./for-users/AfricanLocationSection";
 
@@ -17,40 +19,64 @@ export function ForUsers() {
       <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
         <div className="space-y-20">
           {/* Hero Section */}
-          <UsersHero />
+          <HeroFade>
+            <UsersHero />
+          </HeroFade>
 
           {/* Quick Benefits */}
-          <QuickBenefits />
+          <ScaleFade>
+            <QuickBenefits />
+          </ScaleFade>
 
           {/* How It Works */}
-          <HowItWorksUsers />
+          <FadeIn variant="card">
+            <HowItWorksUsers />
+          </FadeIn>
 
           {/* Earnings Snapshot */}
-          <EarningsSnapshot />
+          <ScaleFade>
+            <EarningsSnapshot />
+          </ScaleFade>
 
           {/* App Features */}
-          <AppFeatures />
+          <FadeIn variant="card">
+            <AppFeatures />
+          </FadeIn>
 
           {/* Getting Started */}
-          <GettingStarted />
+          <ScaleFade>
+            <GettingStarted />
+          </ScaleFade>
 
           {/* Hardware & Install */}
-          <HardwareInstall />
+          <FadeIn variant="body">
+            <HardwareInstall />
+          </FadeIn>
 
           {/* Privacy & Control */}
-          <PrivacyControl />
+          <ScaleFade>
+            <PrivacyControl />
+          </ScaleFade>
 
           {/* Social Proof */}
-          <SocialProof />
+          <FadeIn variant="card">
+            <SocialProof />
+          </FadeIn>
 
           {/* Support & FAQ */}
-          <SupportFAQ />
+          <FadeIn variant="body">
+            <SupportFAQ />
+          </FadeIn>
 
           {/* Final CTA */}
-          <FinalCTA />
+          <ScaleFade>
+            <FinalCTA />
+          </ScaleFade>
 
           {/* African Location Feature */}
-          <AfricanLocationSection />
+          <ScaleFade delay={0.1}>
+            <AfricanLocationSection />
+          </ScaleFade>
         </div>
       </main>
     </div>
