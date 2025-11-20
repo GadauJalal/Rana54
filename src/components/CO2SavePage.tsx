@@ -1,3 +1,5 @@
+import { FadeIn } from "./animations/FadeIn";
+import { HeroFade, ScaleFade } from "./animations/FadeIn";
 import { CO2SaveHero } from "./co2-save/CO2SaveHero";
 import { HowCarbonSavingWorks } from "./co2-save/HowCarbonSavingWorks";
 import { MethodologyStandards } from "./co2-save/MethodologyStandards";
@@ -12,25 +14,39 @@ export function CO2SavePage() {
       <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
         <div className="space-y-24">
           {/* Hero with animated counter */}
-          <CO2SaveHero />
+          <HeroFade>
+            <CO2SaveHero />
+          </HeroFade>
 
           {/* How it works - 4 steps */}
-          <HowCarbonSavingWorks />
+          <ScaleFade>
+            <HowCarbonSavingWorks />
+          </ScaleFade>
 
           {/* Methodology & Standards */}
-          <MethodologyStandards />
+          <FadeIn variant="card">
+            <MethodologyStandards />
+          </FadeIn>
 
           {/* Transparency & Proof */}
-          <TransparencyProof />
+          <ScaleFade>
+            <TransparencyProof />
+          </ScaleFade>
 
           {/* Impact Snapshot with verified metrics */}
-          <ImpactSnapshot />
+          <FadeIn variant="card">
+            <ImpactSnapshot />
+          </FadeIn>
 
           {/* CTAs */}
-          <CO2SaveCTA />
+          <ScaleFade>
+            <CO2SaveCTA />
+          </ScaleFade>
 
           {/* African Location Feature */}
-          <AfricanLocationSection />
+          <ScaleFade delay={0.1}>
+            <AfricanLocationSection />
+          </ScaleFade>
         </div>
       </main>
     </div>

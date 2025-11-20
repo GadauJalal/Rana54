@@ -1,3 +1,5 @@
+import { FadeIn } from "./animations/FadeIn";
+import { HeroFade, ScaleFade } from "./animations/FadeIn";
 import { SolutionsHero } from "./solutions/SolutionsHero";
 import { HowItWorksSteps } from "./solutions/HowItWorksSteps";
 import { ValueByAudience } from "./solutions/ValueByAudience";
@@ -9,40 +11,64 @@ import { IntegrationsSection } from "./solutions/IntegrationsSection";
 import { ImplementationSection } from "./solutions/ImplementationSection";
 import { AfricanLocationSection } from "./solutions/AfricanLocationSection";
 
-export function SolutionsOverview() {
+interface SolutionsOverviewProps {
+  onSolarCalculatorClick?: () => void;
+}
+
+export function SolutionsOverview({ onSolarCalculatorClick }: SolutionsOverviewProps) {
   return (
     <div className="min-h-screen bg-white">
       <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
         <div className="space-y-20">
           {/* Hero Section */}
-          <SolutionsHero />
+          <HeroFade>
+            <SolutionsHero onSolarCalculatorClick={onSolarCalculatorClick} />
+          </HeroFade>
 
           {/* How It Works */}
-          <HowItWorksSteps />
+          <FadeIn variant="card">
+            <HowItWorksSteps />
+          </FadeIn>
 
           {/* Value by Audience */}
-          <ValueByAudience />
+          <ScaleFade>
+            <ValueByAudience />
+          </ScaleFade>
 
           {/* Components Snapshot */}
-          <ComponentsSnapshot />
+          <FadeIn variant="card">
+            <ComponentsSnapshot />
+          </FadeIn>
 
           {/* Data Verification */}
-          <DataVerification />
+          <ScaleFade>
+            <DataVerification />
+          </ScaleFade>
 
           {/* Economics & Impact */}
-          <EconomicsImpact />
+          <FadeIn variant="card">
+            <EconomicsImpact />
+          </FadeIn>
 
           {/* Security & Privacy */}
-          <SecurityPrivacy />
+          <ScaleFade>
+            <SecurityPrivacy />
+          </ScaleFade>
 
           {/* Integrations */}
-          <IntegrationsSection />
+          <FadeIn variant="card">
+            <IntegrationsSection />
+          </FadeIn>
 
           {/* Implementation */}
-          <ImplementationSection />
+          <ScaleFade>
+            <ImplementationSection />
+          </ScaleFade>
 
           {/* African Location Feature */}
-          <AfricanLocationSection />
+          <ScaleFade delay={0.1}>
+            <AfricanLocationSection />
+          </ScaleFade>
         </div>
       </main>
     </div>

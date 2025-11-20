@@ -1,7 +1,11 @@
-import { Sparkles, Shield, Zap, ArrowRight } from "lucide-react";
+import { Sparkles, Shield, Zap, ArrowRight, Calculator } from "lucide-react";
 import { Button } from "../ui/button";
 
-export function SolutionsHero() {
+interface SolutionsHeroProps {
+  onSolarCalculatorClick?: () => void;
+}
+
+export function SolutionsHero({ onSolarCalculatorClick }: SolutionsHeroProps) {
   const pillars = [
     {
       icon: Zap,
@@ -89,6 +93,15 @@ export function SolutionsHero() {
             className="bg-white text-[#527E5F] hover:bg-white/90 shadow-lg hover:shadow-xl transition-all duration-300 px-8 rounded-xl group"
           >
             Request a Demo
+            <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
+          </Button>
+          <Button
+            size="lg"
+            onClick={onSolarCalculatorClick}
+            className="bg-gradient-to-r from-[#F6B842] to-[#F57B44] text-white hover:from-[#F57B44] hover:to-[#F6B842] shadow-lg hover:shadow-xl transition-all duration-300 rounded-xl px-8 group"
+          >
+            <Calculator className="mr-2 w-5 h-5" />
+            Solar Calculator
             <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
           </Button>
           <Button

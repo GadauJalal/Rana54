@@ -1,7 +1,9 @@
+import { FadeIn } from "./animations/FadeIn";
+import { HeroFade, ScaleFade } from "./animations/FadeIn";
 import { CaseStudiesHero } from "./case-studies/CaseStudiesHero";
 import { FeaturedCaseStudies } from "./case-studies/FeaturedCaseStudies";
-import { ImpactReports } from "./case-studies/ImpactReports";
 import { GeographicBreakdown } from "./case-studies/GeographicBreakdown";
+import { ImpactReports } from "./case-studies/ImpactReports";
 import { CaseStudiesCTA } from "./case-studies/CaseStudiesCTA";
 import { AfricanLocationSection } from "./case-studies/AfricanLocationSection";
 
@@ -11,22 +13,34 @@ export function CaseStudiesPage() {
       <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16 lg:py-20">
         <div className="space-y-16 sm:space-y-24 lg:space-y-32">
           {/* Hero */}
-          <CaseStudiesHero />
+          <HeroFade>
+            <CaseStudiesHero />
+          </HeroFade>
 
           {/* Featured case studies */}
-          <FeaturedCaseStudies />
+          <ScaleFade>
+            <FeaturedCaseStudies />
+          </ScaleFade>
 
           {/* Geographic distribution */}
-          <GeographicBreakdown />
+          <FadeIn variant="card">
+            <GeographicBreakdown />
+          </FadeIn>
 
           {/* Reports and white papers */}
-          <ImpactReports />
+          <ScaleFade>
+            <ImpactReports />
+          </ScaleFade>
 
           {/* CTAs */}
-          <CaseStudiesCTA />
+          <FadeIn variant="card">
+            <CaseStudiesCTA />
+          </FadeIn>
 
           {/* African Location Feature */}
-          <AfricanLocationSection />
+          <ScaleFade delay={0.1}>
+            <AfricanLocationSection />
+          </ScaleFade>
         </div>
       </main>
     </div>

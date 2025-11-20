@@ -57,7 +57,7 @@ const pressReleases = [
   },
 ];
 
-export function LatestPressReleases() {
+export function LatestPressReleases({ onReadClick }: { onReadClick?: (post: any) => void }) {
   return (
     <section>
       <div className="flex items-center justify-between mb-12">
@@ -82,6 +82,7 @@ export function LatestPressReleases() {
           return (
             <article
               key={index}
+              onClick={() => onReadClick?.(release)}
               className="group bg-white rounded-3xl overflow-hidden border border-gray-200 shadow-[0_8px_30px_-8px_rgba(0,0,0,0.12)] hover:shadow-[0_20px_50px_-15px_rgba(0,0,0,0.2)] transition-all duration-500 hover:scale-[1.02] cursor-pointer"
             >
               {/* Image/Video thumb */}
