@@ -1,34 +1,37 @@
 import { Linkedin, Mail, ArrowRight } from "lucide-react";
-
+import IbrahimImg from "../../assets/images/Ibrahim.jpg";
+import AbdullahImg from "../../assets/images/Abdullah Maigari.jpg";
+import JaafarImg from "../../assets/images/Ja'afar Maigari.jpg";
+import AbbaImg from "../../assets/images/Abba Gumel.jpg";
 export function TheTeam() {
   const leadership = [
     {
-      name: "Dr. Amara Okafor",
+      name: "Ibrahim Maigari",
       role: "Co-Founder & CEO",
       focus: "Strategy & Impact",
       bio: "Former energy systems researcher with 10+ years scaling clean tech across Africa.",
-      image: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=400&h=400&fit=crop"
+      image: IbrahimImg
     },
     {
-      name: "James Kimani",
+      name: "Abdullah Maigari",
       role: "Co-Founder & CTO",
       focus: "Platform & IoT",
       bio: "IoT architect and blockchain engineer building verifiable infrastructure at scale.",
-      image: "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=400&h=400&fit=crop"
+      image: AbdullahImg
     },
     {
-      name: "Fatima Hassan",
-      role: "Chief Product Officer",
+      name: "Ja'afar Maigari",
+      role: "Product Manager",
       focus: "User Experience",
       bio: "Product leader passionate about making complex technology accessible and delightful.",
-      image: "https://images.unsplash.com/photo-1580489944761-15a19d654956?w=400&h=400&fit=crop"
+      image:JaafarImg
     },
     {
-      name: "David Mwangi",
+      name: "Abba Gumel",
       role: "Head of Partnerships",
       focus: "Ecosystem Growth",
       bio: "Connector building bridges between installers, NGOs, and carbon market buyers.",
-      image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=400&h=400&fit=crop"
+      image: AbbaImg
     }
   ];
 

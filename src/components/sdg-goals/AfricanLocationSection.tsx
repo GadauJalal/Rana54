@@ -1,10 +1,11 @@
+import Dzanga from "../../assets/images/Dzanga.jpg";
 export function AfricanLocationSection() {
   return (
     <section className="relative overflow-hidden">
       <div className="bg-white rounded-2xl sm:rounded-3xl border border-gray-200 shadow-[0_20px_70px_-15px_rgba(0,0,0,0.15)] overflow-hidden">
         <div className="relative h-[400px] sm:h-[500px] lg:h-[600px] xl:h-[700px]">
           <img
-            src="https://images.unsplash.com/photo-1674464901627-17741e42c34b?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxDZW50cmFsJTIwQWZyaWNhbiUyMFJlcHVibGljJTIwZm9yZXN0fGVufDF8fHx8MTc2MDk4NTMxN3ww&ixlib=rb-4.1.0&q=80&w=1080"
+            src={Dzanga}
             alt="Dzanga-Sangha Special Reserve, Central African Republic"
             className="absolute inset-0 w-full h-full object-cover"
           />

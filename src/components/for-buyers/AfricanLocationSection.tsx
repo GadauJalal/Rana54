@@ -1,10 +1,11 @@
+import KalandulaWaterfalls from "../../assets/images/Kalandula_waterfalls_of_the_Lucala.jpeg";
 export function AfricanLocationSection() {
   return (
     <section className="relative overflow-hidden">
       <div className="bg-white rounded-2xl sm:rounded-3xl border border-gray-200 shadow-[0_20px_70px_-15px_rgba(0,0,0,0.15)] overflow-hidden">
         <div className="relative h-[400px] sm:h-[500px] lg:h-[600px] xl:h-[700px]">
           <img
-            src="https://images.unsplash.com/photo-1648510399152-8996b60e0236?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxBbmdvbGElMjB3YXRlcmZhbGwlMjBsYW5kc2NhcGV8ZW58MXx8fHwxNzYwOTg1MzE0fDA&ixlib=rb-4.1.0&q=80&w=1080"
+            src={KalandulaWaterfalls}
             alt="Kalandula Falls, Malanje Province, Angola"
             className="absolute inset-0 w-full h-full object-cover"
           />
