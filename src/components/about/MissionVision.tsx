@@ -10,11 +10,11 @@ export function MissionVision() {
         </div>
         <h2 className="text-3xl text-white mb-4 tracking-tight">Our Mission</h2>
         <p className="text-xl text-white/90 leading-relaxed">
-          To empower people and communities across Africa to generate, track, and monetize clean energy—driving real, measurable climate impact.
+          To drive the adoption of renewable energy in Africa by combining smart technology, data analytics, and innovative models to empower households, businesses, and institutions enabling them to thrive while using clean and energy
         </p>
         <div className="mt-8 pt-6 border-t border-white/20">
           <p className="text-white/70 leading-relaxed">
-            We believe every solar panel owner should benefit from their contribution to a cleaner future. Our mission is to make that a reality through verified data, transparent systems, and accessible technology.
+            We believe every energy user should benefit from their contribution to a cleaner future. Our mission is to make that a reality through verified data, transparent systems, and accessible technology.
           </p>
         </div>
       </div>
