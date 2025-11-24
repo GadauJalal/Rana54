@@ -37,6 +37,13 @@ export function OurValues() {
       detail: "No single organization can transform an entire energy system. We succeed by partnering with installers, NGOs, buyers, and communities across Africa.",
       gradient: "from-[#F6B842] to-[#F57B44]"
     }
+    {
+      icon: Users,
+      title: "Resilience",
+      description: "We embody the strength and adaptability of Africa itself . thriving through challenges, learning from every obstacle, and building systems that last.",
+      detail: "No single organization can transform an entire energy system. We succeed by partnering with installers, NGOs, buyers, and communities across Africa.",
+      gradient: "from-[#F6B842] to-[#F57B44]"
+    }
   ];
 
   return (
