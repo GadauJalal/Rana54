@@ -236,12 +236,12 @@ export default function App() {
               </div>
               <div className="lg:col-span-4">
                 <SlideReveal direction="left" delay={0.1}>
-                  <RanaOSCard />
+                  <RanaMeterCard />
                 </SlideReveal>
               </div>
               <div className="lg:col-span-4">
                 <ScaleFade delay={0.12} intensity="strong" blur={true}>
-                  <RanaMeterCard />
+                  <RanaOSCard />
                 </ScaleFade>
               </div>
               <div className="lg:col-span-4">
