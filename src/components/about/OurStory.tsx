@@ -23,7 +23,7 @@ export function OurStory() {
               <div>
                 <h3 className="text-gray-900 mb-2 tracking-wide">The Problem</h3>
                 <p className="text-gray-600 leading-relaxed">
-                  Across Africa, millions of solar systems generate clean energy every day—yet this impact remains invisible. Fragmented data, unverifiable claims, and disconnected systems meant that solar users couldn't prove their contribution to climate action or access the value their clean energy creates.
+                 Across Africa, millions of people and businesses still struggle with unreliable, expensive, and inconsistent power. Frequent outages, rising energy costs, and limited access to clean alternatives have created a cycle where productivity slows, opportunities shrink, and progress depends on the grid’s next flicker.
                 </p>
               </div>
             </div>
@@ -37,7 +37,8 @@ export function OurStory() {
               <div>
                 <h3 className="text-gray-900 mb-2 tracking-wide">Our Solution</h3>
                 <p className="text-gray-600 leading-relaxed">
-                  We built a unified ecosystem—RanaMeter hardware for tamper-proof measurement, RanaOS for seamless data management, and RanaID for verifiable digital identity. Together, they make every watt of clean energy measurable, traceable, and valuable.
+                  We built a unified ecosystem —RanaMeter for tamper-proof measurement, RanaOS for seamless energy data management, and RanaID for secure digital identity.Together, they make every watt of clean energy measurable, traceable, and valuable.
+To complete the loop, Rana-Iris brings intelligence to the system , a solar simulation tool that helps users understand their true energy potential, savings, and system needs before installation. It’s how we turn data into decisions, and decisions into lasting power for Africa.
                 </p>
               </div>
             </div>
@@ -52,10 +53,11 @@ export function OurStory() {
               The Vision That Drives Us
             </h3>
             <p className="text-white/90 text-lg leading-relaxed mb-6">
-              Rana54 was founded on a simple belief: clean energy should benefit everyone—not just those who can afford expensive verification systems. We saw an opportunity to merge IoT, blockchain, and climate technology to democratize access to carbon markets and energy finance.
+              Rana54's vision is to power Africa’s next chapter through intelligence ,A future where clean, reliable energy is woven into everyday life, and where data and technology give people the power to take control of their own light.
+We imagine a continent where electricity never limits potential , where a student can study without interruption, a business can run without fear of outages, and a village can thrive because its energy is homegrown, affordable, and smart.
             </p>
             <p className="text-white/80 leading-relaxed mb-6">
-              Starting with pilot deployments in Kenya, we've grown into a pan-African platform serving thousands of users. Every device we deploy, every kilowatt-hour we verify, and every dollar we help users earn brings us closer to a future where clean energy is truly universal.
+              Rana54 exists to turn that vision into reality. By combining measurement, management, and intelligence through RanaMeter, RanaOS, RanaID, and Rana-Iris, we are building Africa’s first connected clean-energy ecosystem , one that makes renewable power not just possible, but dependable and personal.
             </p>
             <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/20 backdrop-blur-sm border border-white/30">
               <span className="text-sm text-white tracking-wide">From local roots to continental impact</span>
