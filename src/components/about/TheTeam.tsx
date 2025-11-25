@@ -68,7 +68,7 @@ export function TheTeam() {
         {leadership.map((member, index) => (
           <div
             key={index}
-            className="group rounded-3xl bg-white border-2 border-gray-100 hover:border-[#527E5F]/20 shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden"
+            className="group rounded-3xl bg-white border-2 border-gray-100 hover:border-[#527E5F]/20 shadow-lg mx-auto hover:shadow-2xl transition-all duration-300 overflow-hidden"
           >
             {/* Photo */}
             <div className="aspect-square overflow-hidden bg-gray-100">
