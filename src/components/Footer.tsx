@@ -24,7 +24,7 @@ export function Footer() {
   const socialLinks = [
     {
       name: "Instagram",
-      href: "https://www.instagram.com",
+      href: "http://www.instagram.com/rana54systems",
       icon: (
         <svg className="w-5 h-5" fill="none" viewBox="0 0 25 25">
           <path d={svgPaths.p2e53de00} stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5625" />
@@ -36,7 +36,7 @@ export function Footer() {
     },
     {
       name: "X (Twitter)",
-      href: "https://twitter.com",
+      href: "https://x.com/Rana54systems?t=YWylrhcbGTJb23SbJAVYAQ&s=09",
       icon: (
         <svg className="w-5 h-5" fill="none" viewBox="0 0 25 25">
           <path d={svgPaths.p32123000} stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5625" />
@@ -48,7 +48,7 @@ export function Footer() {
     },
     {
       name: "LinkedIn",
-      href: "https://www.linkedin.com",
+      href: "https://www.linkedin.com/company/rana54/",
       icon: (
         <svg className="w-5 h-5" fill="none" viewBox="0 0 25 25">
           <path d={svgPaths.p1f752200} stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5625" />
