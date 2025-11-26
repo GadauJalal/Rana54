@@ -69,9 +69,7 @@ export function HeroCard() {
               <div className="relative rounded-[1.5rem] overflow-hidden aspect-[16/9]">
                 <video src={Video} autoPlay muted loop playsInline className="w-full h-full object-cover" />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/10 via-transparent to-transparent" />
-                <div className="absolute top-6 right-6 w-20 h-20 bg-gradient-to-br from-[#F6B842] to-[#F57B44] rounded-xl opacity-90 shadow-lg flex items-center justify-center">
-                  <Zap className="w-10 h-10 text-white" strokeWidth={2.5} fill="white" />
-                </div>
+                
               </div>
             </div>
           </div>
