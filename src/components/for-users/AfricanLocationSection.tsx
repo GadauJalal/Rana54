@@ -1,4 +1,4 @@
-import WhiteDesert from "../../assets/images/White_desert.jpg";
+import WhiteDesert from "../../assets/White_desert.jpg";
 export function AfricanLocationSection() {
   return (
     <section className="relative overflow-hidden">

@@ -1,11 +1,11 @@
-import MoleNationalPark from "../../assets/images/Ghana_mole_national_park.jpg";
+import Mole from "../../assets/Ghana_mole_national_park.jpg";
 export function AfricanLocationSection() {
   return (
     <section className="relative overflow-hidden">
       <div className="bg-white rounded-2xl sm:rounded-3xl border border-gray-200 shadow-[0_20px_70px_-15px_rgba(0,0,0,0.15)] overflow-hidden">
         <div className="relative h-[400px] sm:h-[500px] lg:h-[600px] xl:h-[700px]">
           <img
-            src={MoleNationalPark}
+            src={Mole}
             alt="Mole National Park, Savannah Region, Ghana"
             className="absolute inset-0 w-full h-full object-cover"
           />

@@ -1,5 +1,23 @@
 import { motion, useInView, Variant, useScroll, useTransform, useSpring } from "motion/react";
-import { useRef, ReactNode } from "react";
+import { useRef, ReactNode, useEffect, useState } from "react";
+
+// Hook to detect mobile devices
+function useIsMobile() {
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+    
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
+
+  return isMobile;
+}
 
 // Apple's signature easing curves - precisely tuned
 const EASE_OUT_EXPO = [0.16, 1, 0.3, 1]; // Dramatic, confident exit - Apple's favorite
@@ -44,6 +62,7 @@ export function FadeIn({
   springConfig,
 }: FadeInProps) {
   const ref = useRef<HTMLDivElement>(null);
+  const isMobile = useIsMobile();
   
   // Apple-style threshold: trigger slightly before element enters viewport
   const isInView = useInView(ref, {
@@ -51,6 +70,11 @@ export function FadeIn({
     amount: 0.15, // Trigger when 15% visible for more immediate feel
     margin: "0px 0px -8% 0px", // Start animation slightly before element is visible
   });
+
+  // Skip animations on mobile
+  if (isMobile) {
+    return <div ref={ref} className={className}>{children}</div>;
+  }
 
   // Variant-specific defaults - carefully tuned
   const variantDefaults = {
@@ -164,11 +188,17 @@ export function FadeInStagger({
   variant = "normal",
 }: FadeInStaggerProps) {
   const ref = useRef<HTMLDivElement>(null);
+  const isMobile = useIsMobile();
   const isInView = useInView(ref, {
     once: true,
     amount: 0.1,
     margin: "0px 0px -5% 0px",
   });
+
+  // Skip animations on mobile
+  if (isMobile) {
+    return <div ref={ref} className={className}>{children}</div>;
+  }
 
   // Apple uses incredibly tight stagger delays for fluidity
   const staggerVariants = {
@@ -281,11 +311,17 @@ export function ScaleFade({
   springy = false,
 }: ScaleFadeProps) {
   const ref = useRef<HTMLDivElement>(null);
+  const isMobile = useIsMobile();
   const isInView = useInView(ref, {
     once: true,
     amount: 0.15,
     margin: "0px 0px -6% 0px",
   });
+
+  // Skip animations on mobile
+  if (isMobile) {
+    return <div ref={ref} className={className}>{children}</div>;
+  }
 
   // Apple uses very subtle scale transforms with blur for depth
   const intensityConfig = {
@@ -346,10 +382,16 @@ interface HeroFadeProps {
 
 export function HeroFade({ children, delay = 0, className = "" }: HeroFadeProps) {
   const ref = useRef<HTMLDivElement>(null);
+  const isMobile = useIsMobile();
   const isInView = useInView(ref, {
     once: true,
     amount: 0.2,
   });
+
+  // Skip animations on mobile
+  if (isMobile) {
+    return <div ref={ref} className={className}>{children}</div>;
+  }
 
   return (
     <motion.div
@@ -404,11 +446,17 @@ export function SlideReveal({
   blur = true,
 }: SlideRevealProps) {
   const ref = useRef<HTMLDivElement>(null);
+  const isMobile = useIsMobile();
   const isInView = useInView(ref, {
     once: true,
     amount: 0.2,
     margin: "0px 0px -12% 0px",
   });
+
+  // Skip animations on mobile
+  if (isMobile) {
+    return <div ref={ref} className={className}>{children}</div>;
+  }
 
   const initialX = direction === "left" ? -80 : 80;
 
@@ -458,10 +506,16 @@ export function ParallaxScroll({
   className = "",
 }: ParallaxScrollProps) {
   const ref = useRef<HTMLDivElement>(null);
+  const isMobile = useIsMobile();
   const { scrollYProgress } = useScroll({
     target: ref,
     offset: ["start end", "end start"],
   });
+
+  // Skip animations on mobile
+  if (isMobile) {
+    return <div ref={ref} className={className}>{children}</div>;
+  }
 
   // Smooth spring animation for parallax
   const y = useSpring(
@@ -495,10 +549,16 @@ export function ZoomReveal({
   intensity = "normal",
 }: ZoomRevealProps) {
   const ref = useRef<HTMLDivElement>(null);
+  const isMobile = useIsMobile();
   const isInView = useInView(ref, {
     once: true,
     amount: 0.2,
   });
+
+  // Skip animations on mobile
+  if (isMobile) {
+    return <div ref={ref} className={className}>{children}</div>;
+  }
 
   const intensityConfig = {
     subtle: { scale: 1.05, blur: 3, duration: 1.0 },
@@ -588,10 +648,16 @@ export function RotateIn({
   direction = "clockwise",
 }: RotateInProps) {
   const ref = useRef<HTMLDivElement>(null);
+  const isMobile = useIsMobile();
   const isInView = useInView(ref, {
     once: true,
     amount: 0.2,
   });
+
+  // Skip animations on mobile
+  if (isMobile) {
+    return <div ref={ref} className={className}>{children}</div>;
+  }
 
   const initialRotate = direction === "clockwise" ? 15 : -15;
 

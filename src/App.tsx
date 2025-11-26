@@ -105,7 +105,7 @@ export default function App() {
   };
 
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-white overflow-x-hidden">
       <Navbar 
         onLogoClick={navigateToHome} 
         onSolutionsClick={navigateToSolutions}
@@ -191,8 +191,8 @@ export default function App() {
         </>
       ) : (
         <>
-          <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12 lg:py-16">
-            <div className="grid grid-cols-1 lg:grid-cols-4 gap-4 sm:gap-6 auto-rows-auto">
+          <main className="w-full max-w-7xl mx-auto px-3 sm:px-4 md:px-6 lg:px-8 py-6 sm:py-8 md:py-12 lg:py-16">
+            <div className="grid grid-cols-1 lg:grid-cols-4 gap-3 sm:gap-4 md:gap-6 auto-rows-auto">
               <div className="lg:col-span-4">
                 <HeroFade delay={0.1}>
                   <HeroCard />
@@ -225,24 +225,25 @@ export default function App() {
               </div>
               <div className="lg:col-span-4">
                 <FadeIn variant="heading" blur={true} scale={true}>
-                  <div className="mb-6 sm:mb-8 text-center">
-                    <h2 className="text-3xl sm:text-4xl lg:text-5xl mb-3 sm:mb-4 tracking-tight">Who It's For</h2>
-                    <p className="text-base sm:text-lg lg:text-xl text-gray-600">Solutions for every stakeholder in the clean energy ecosystem</p>
+                  <div className="mb-4 sm:mb-6 md:mb-8 text-center">
+                    <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl mb-2 sm:mb-3 md:mb-4 tracking-tight">Who It's For</h2>
+                    <p className="text-sm sm:text-base md:text-lg lg:text-xl text-gray-600 px-4">Solutions for every stakeholder in the clean energy ecosystem</p>
                   </div>
-                  <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4 md:gap-6">
                     <AudienceCards />
                   </div>
                 </FadeIn>
               </div>
-              <div className="lg:col-span-4">
-                <SlideReveal direction="left" delay={0.1}>
-                  <RanaMeterCard />
-                </SlideReveal>
-              </div>
+              
               <div className="lg:col-span-4">
                 <ScaleFade delay={0.12} intensity="strong" blur={true}>
-                  <RanaOSCard />
+                  <RanaMeterCard />
                 </ScaleFade>
+              </div>
+              <div className="lg:col-span-4">
+                <SlideReveal direction="left" delay={0.1}>
+                  <RanaOSCard />
+                </SlideReveal>
               </div>
               <div className="lg:col-span-4">
                 <SlideReveal direction="right" delay={0.1}>

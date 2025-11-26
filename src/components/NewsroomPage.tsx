@@ -1,6 +1,5 @@
 import { useState } from "react";
 import { NewsroomHero } from "./newsroom/NewsroomHero";
-import { GlobalControls } from "./newsroom/GlobalControls";
 import { LatestPressReleases } from "./newsroom/LatestPressReleases";
 import { InTheMedia } from "./newsroom/InTheMedia";
 import { Announcements } from "./newsroom/Announcements";
@@ -13,10 +12,6 @@ import { UtilityFooter } from "./newsroom/UtilityFooter";
 import { BlogPostDetail } from "./newsroom/BlogPostDetail";
 
 export function NewsroomPage() {
-  const [searchQuery, setSearchQuery] = useState("");
-  const [selectedTags, setSelectedTags] = useState<string[]>([]);
-  const [selectedYear, setSelectedYear] = useState<string>("all");
-  const [sortBy, setSortBy] = useState<"newest" | "most-read">("newest");
   const [selectedPost, setSelectedPost] = useState<any>(null);
 
   if (selectedPost) {
@@ -29,18 +24,6 @@ export function NewsroomPage() {
         <div className="space-y-24">
           {/* Hero with Featured Story */}
           <NewsroomHero onReadClick={(post) => setSelectedPost(post)} />
-
-          {/* Global Controls */}
-          <GlobalControls
-            searchQuery={searchQuery}
-            setSearchQuery={setSearchQuery}
-            selectedTags={selectedTags}
-            setSelectedTags={setSelectedTags}
-            selectedYear={selectedYear}
-            setSelectedYear={setSelectedYear}
-            sortBy={sortBy}
-            setSortBy={setSortBy}
-          />
 
           {/* Latest Press Releases */}
           <LatestPressReleases onReadClick={(post) => setSelectedPost(post)} />

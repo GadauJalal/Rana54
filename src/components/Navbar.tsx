@@ -159,21 +159,21 @@ export function Navbar({ onLogoClick, onSolutionsClick, onSolarCalculatorClick, 
 
 
   return (
-    <div className="sticky top-0 z-50">
+    <div className="sticky top-0 z-50 w-full overflow-x-hidden">
       {/* Premium navbar with floating menu */}
-      <nav className={`bg-white/98 backdrop-blur-xl transition-all duration-300 ${
+      <nav className={`bg-white/98 backdrop-blur-xl transition-all duration-300 w-full ${
         scrolled 
           ? "shadow-[0_8px_30px_-8px_rgba(0,0,0,0.12)]" 
           : ""
       }`}>
-        <div className="max-w-7xl mx-auto px-6 lg:px-8">
-          <div className="flex items-center justify-between h-24">
+        <div className="max-w-7xl mx-auto px-3 sm:px-4 md:px-6 lg:px-8 w-full">
+          <div className="flex items-center justify-between h-20 sm:h-24">
             {/* Logo */}
             <div className="flex-shrink-0 group cursor-pointer" onClick={onLogoClick}>
               <img 
                 src={ranaLogo} 
                 alt="Rana54" 
-                className="h-16 w-auto group-hover:scale-105 transition-transform duration-300"
+                className="h-12 sm:h-16 w-auto group-hover:scale-105 transition-transform duration-300"
               />
             </div>
 

@@ -6,50 +6,7 @@ import { Input } from "./ui/input";
 import { Label } from "./ui/label";
 import { Textarea } from "./ui/textarea";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "./ui/select";
-// Ensure the modal fits in the viewport: inject a small stylesheet and tag the DialogContent
-// when it appears so we can constrain its max width and height.
-if (typeof window !== "undefined") {
-  const STYLE_ID = "request-demo-modal-fix";
-  if (!document.getElementById(STYLE_ID)) {
-    const style = document.createElement("style");
-    style.id = STYLE_ID;
-    style.textContent = `
-      .request-demo-dialog-content {
-        max-width: 520px !important;
-        width: min(92vw, 520px) !important;
-        max-height: 90vh !important;
-        overflow: auto !important;
-        box-sizing: border-box;
-      }
-    `;
-    document.head.appendChild(style);
-  }
 
-  const markDialogContent = (root: ParentNode = document) => {
-    // target the DialogContent by its distinctive utility classes used in this component
-    const els = Array.from(root.querySelectorAll<HTMLElement>(".rounded-3xl.bg-white"));
-    els.forEach(el => el.classList.add("request-demo-dialog-content"));
-  };
-
-  // Run once for already-mounted dialogs
-  markDialogContent();
-
-  // Observe DOM additions and tag newly mounted dialog contents
-  const observer = new MutationObserver(mutations => {
-    for (const m of mutations) {
-      m.addedNodes.forEach(node => {
-        if (node instanceof HTMLElement) {
-          if (node.classList && node.classList.contains("rounded-3xl") && node.classList.contains("bg-white")) {
-            node.classList.add("request-demo-dialog-content");
-          }
-          markDialogContent(node);
-        }
-      });
-    }
-  });
-
-  observer.observe(document.body, { childList: true, subtree: true });
-}
 interface RequestDemoModalProps {
   open: boolean;
   onOpenChange: (open: boolean) => void;
@@ -93,7 +50,7 @@ export function RequestDemoModal({ open, onOpenChange }: RequestDemoModalProps) 
 
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
-      <DialogContent className="sm:max-w-[600px] p-0 overflow-hidden bg-white rounded-3xl border-0 shadow-[0_20px_70px_-15px_rgba(0,0,0,0.3)]">
+      <DialogContent className="sm:max-w-[600px] p-0 overflow-hidden bg-white rounded-3xl border-0 shadow-[0_20px_70px_-15px_rgba(0,0,0,0.3)] [&>button]:hidden">
         {/* Hidden accessibility elements */}
         <DialogTitle className="sr-only">
           {submitted ? "Demo Request Received" : "Request a Demo"}
@@ -140,12 +97,7 @@ export function RequestDemoModal({ open, onOpenChange }: RequestDemoModalProps) 
                   <div className="w-12 h-12 bg-white/20 backdrop-blur-sm rounded-xl flex items-center justify-center">
                     <Sparkles className="w-6 h-6 text-white" strokeWidth={2.5} />
                   </div>
-                  <button
-                    onClick={() => onOpenChange(false)}
-                    className="w-10 h-10 rounded-xl bg-white/10 hover:bg-white/20 backdrop-blur-sm flex items-center justify-center transition-colors group"
-                  >
-                    <X className="w-5 h-5 text-white group-hover:rotate-90 transition-transform duration-300" />
-                  </button>
+                  
                 </div>
                 
                 <h2 className="text-3xl text-white mb-3 tracking-tight">

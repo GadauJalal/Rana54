@@ -1,4 +1,4 @@
-import Bijagós from "../../assets/images/L'Archipel_des_Bijagos_vu_par_Sentinel.jpg";
+import Bijagós  from "../../assets/L'Archipel_des_Bijagos_vu_par_Sentinel.jpg";
 export function AfricanLocationSection() {
   return (
     <section className="relative overflow-hidden">
@@ -6,7 +6,6 @@ export function AfricanLocationSection() {
         <div className="relative h-[400px] sm:h-[500px] lg:h-[600px] xl:h-[700px]">
           <img
             src={Bijagós}
-            alt="Bijagós Archipelago, Guinea-Bissau"
             className="absolute inset-0 w-full h-full object-cover"
           />
           

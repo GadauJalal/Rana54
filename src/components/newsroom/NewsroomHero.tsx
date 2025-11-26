@@ -30,7 +30,7 @@ export function NewsroomHero({ onReadClick }: { onReadClick?: (post: any) => voi
       </div>
 
       {/* Featured Story Card */}
-      <div className="bg-white rounded-3xl  border border-gray-200 shadow-[0_20px_70px_-15px_rgba(0,0,0,0.15)] group hover:shadow-[0_30px_90px_-15px_rgba(0,0,0,0.2)] transition-all duration-500">
+      <div className="bg-white rounded-3xl overflow-hidden border border-gray-200 shadow-[0_20px_70px_-15px_rgba(0,0,0,0.15)] group hover:shadow-[0_30px_90px_-15px_rgba(0,0,0,0.2)] transition-all duration-500">
         <div className="grid lg:grid-cols-2 gap-0">
           {/* Large Image/Video */}
           <div className="relative h-96 lg:h-auto overflow-hidden bg-[#527E5F]">

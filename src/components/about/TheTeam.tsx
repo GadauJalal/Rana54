@@ -1,8 +1,9 @@
 import { Linkedin, Mail, ArrowRight } from "lucide-react";
-import IbrahimImg from "../../assets/images/Ibrahim.jpg";
-import AbdullahImg from "../../assets/images/Abdullah Maigari.jpg";
-import JaafarImg from "../../assets/images/Ja'afar Maigari.jpg";
-import AbbaImg from "../../assets/images/Abba Gumel.jpg";
+import ibrahimImage from "figma:asset/230768531282e1f5b03601349cd54e865690c641.png";
+import abdullahImage from "figma:asset/4a3de0398465621d103f654403bb2aedf6e348c0.png";
+import jaafarImage from "figma:asset/df7d63f9a541d0dfca15cfdfd3bc97b03cbd82d6.png";
+import abbaImage from "figma:asset/9dbcaf1bfe5e0d5644b276b45c74ff67e7d711c9.png";
+
 export function TheTeam() {
   const leadership = [
     {
@@ -10,28 +11,28 @@ export function TheTeam() {
       role: "Co-Founder & CEO",
       focus: "Strategy & Impact",
       bio: "Former energy systems researcher with 10+ years scaling clean tech across Africa.",
-      image: IbrahimImg
+      image: ibrahimImage
     },
     {
       name: "Abdullah Maigari",
       role: "Co-Founder & CTO",
       focus: "Platform & IoT",
       bio: "IoT architect and blockchain engineer building verifiable infrastructure at scale.",
-      image: AbdullahImg
+      image: abdullahImage
     },
     {
       name: "Ja'afar Maigari",
       role: "Product Manager",
       focus: "User Experience",
       bio: "Product leader passionate about making complex technology accessible and delightful.",
-      image:JaafarImg
+      image: jaafarImage
     },
     {
       name: "Abba Gumel",
       role: "Head of Partnerships",
       focus: "Ecosystem Growth",
       bio: "Connector building bridges between installers, NGOs, and carbon market buyers.",
-      image: AbbaImg
+      image: abbaImage
     }
   ];
 
@@ -68,7 +69,7 @@ export function TheTeam() {
         {leadership.map((member, index) => (
           <div
             key={index}
-            className="group rounded-3xl bg-white border-2 border-gray-100 hover:border-[#527E5F]/20 shadow-lg mx-auto hover:shadow-2xl transition-all duration-300 overflow-hidden"
+            className="group rounded-3xl bg-white border-2 border-gray-100 hover:border-[#527E5F]/20 shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden"
           >
             {/* Photo */}
             <div className="aspect-square overflow-hidden bg-gray-100">

@@ -24,7 +24,6 @@ export function Footer() {
   const socialLinks = [
     {
       name: "Instagram",
-      href: "https://www.instagram.com/rana54/",
       icon: (
         <svg className="w-5 h-5" fill="none" viewBox="0 0 25 25">
           <path d={svgPaths.p2e53de00} stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5625" />
@@ -36,7 +35,6 @@ export function Footer() {
     },
     {
       name: "X (Twitter)",
-      href: "https://x.com/rana54",
       icon: (
         <svg className="w-5 h-5" fill="none" viewBox="0 0 25 25">
           <path d={svgPaths.p32123000} stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5625" />
@@ -48,7 +46,6 @@ export function Footer() {
     },
     {
       name: "LinkedIn",
-      href: "https://www.linkedin.com/company/rana54/",
       icon: (
         <svg className="w-5 h-5" fill="none" viewBox="0 0 25 25">
           <path d={svgPaths.p1f752200} stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5625" />
@@ -117,7 +114,7 @@ export function Footer() {
               {socialLinks.map((social, index) => (
                 <a
                   key={index}
-                  href={social.href}
+                  href="#"
                   className="group/social relative w-10 sm:w-12 h-10 sm:h-12 bg-white rounded-xl flex items-center justify-center shadow-[0px_0.602px_0.602px_0px_rgba(28,28,28,0.01),0px_2.289px_2.289px_0px_rgba(28,28,28,0.03),0px_10px_10px_0px_rgba(28,28,28,0.12)] hover:shadow-[0_12px_30px_-8px_rgba(0,0,0,0.15)] transition-all duration-300 hover:scale-110 hover:-translate-y-1 border border-white/60"
                   aria-label={social.name}
                 >

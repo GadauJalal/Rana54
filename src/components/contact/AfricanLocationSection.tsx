@@ -1,11 +1,11 @@
-import MountNimba from "../../assets/images/Mount_Nimba_Strict_Nature.jpg"
+import Nimba from "../../assets/Mount_Nimba_Strict_Nature.jpg";
 export function AfricanLocationSection() {
   return (
     <section className="relative overflow-hidden">
       <div className="bg-white rounded-2xl sm:rounded-3xl border border-gray-200 shadow-[0_20px_70px_-15px_rgba(0,0,0,0.15)] overflow-hidden">
         <div className="relative h-[400px] sm:h-[500px] lg:h-[600px] xl:h-[700px]">
           <img
-            src={MountNimba}
+            src={Nimba}
             alt="Mount Nimba Strict Nature Reserve, Guinea"
             className="absolute inset-0 w-full h-full object-cover"
           />

@@ -1,4 +1,4 @@
-import Dzanga from "../../assets/images/Dzanga.jpg";
+import Dzanga from "../../assets/Dzanga.jpg";
 export function AfricanLocationSection() {
   return (
     <section className="relative overflow-hidden">

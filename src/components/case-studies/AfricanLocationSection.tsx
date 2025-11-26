@@ -1,11 +1,11 @@
-import MountCameroon from "../../assets/images/Mont-Cameroun.jpg";
+import Cameroon from "../../assets/Mont-Cameroun.jpg";
 export function AfricanLocationSection() {
   return (
     <section className="relative overflow-hidden">
       <div className="bg-white rounded-2xl sm:rounded-3xl border border-gray-200 shadow-[0_20px_70px_-15px_rgba(0,0,0,0.15)] overflow-hidden">
         <div className="relative h-[400px] sm:h-[500px] lg:h-[600px] xl:h-[700px]">
           <img
-            src={MountCameroon}
+            src={Cameroon}
             alt="Mount Cameroon, Southwest Region, Cameroon"
             className="absolute inset-0 w-full h-full object-cover"
           />

@@ -1,4 +1,4 @@
-import Tassili from "../../assets/images/Parc_National_du_Tassili_,_Algérie.jpg"
+import Tassili from "../../assets/Parc_National_du_Tassili_,_Algérie.jpg";
 export function AfricanLocationSection() {
   return (
     <section className="relative overflow-hidden">

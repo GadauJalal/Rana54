@@ -1,7 +1,7 @@
 
-  # Clean Energy Brand Homepage
+  # Rana54 Homepag Website
 
-  This is a code bundle for Clean Energy Brand Homepage. The original project is available at https://www.figma.com/design/8Y5UiCrIh8trBPEIRevnp7/Clean-Energy-Brand-Homepage.
+  This is a code bundle for Clean Energy Brand Named Rana54.
 
   ## Running the code
 
