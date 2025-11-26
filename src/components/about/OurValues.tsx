@@ -36,7 +36,7 @@ export function OurValues() {
       description: "Working with trusted partners to scale clean energy",
       detail: "No single organization can transform an entire energy system. We succeed by partnering with installers, NGOs, buyers, and communities across Africa.",
       gradient: "from-[#F6B842] to-[#F57B44]"
-    }
+    },
     {
       icon: Users,
       title: "Resilience",
