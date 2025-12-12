@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { Link, useLocation } from "react-router-dom";
 import { Button } from "./ui/button";
 import { ArrowRight, Sparkles, Users, ShoppingCart, Handshake, Building2, Lightbulb, Mail, Leaf, FileText, Target, BookOpen, Menu, X, ChevronDown, Calculator } from "lucide-react";
 import {
@@ -12,25 +13,7 @@ import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "./ui/collap
 import ranaLogo from "figma:asset/70c6d6740bd42316c4c5fea5bc7ba57852ccc0f8.png";
 import { RequestDemoModal } from "./RequestDemoModal";
 
-interface NavbarProps {
-  onLogoClick?: () => void;
-  onSolutionsClick?: () => void;
-  onSolarCalculatorClick?: () => void;
-  onForUsersClick?: () => void;
-  onForBuyersClick?: () => void;
-  onForPartnersClick?: () => void;
-  onAboutClick?: () => void;
-  onContactClick?: () => void;
-  onHowItWorksClick?: () => void;
-  onCO2SaveClick?: () => void;
-  onCaseStudiesClick?: () => void;
-  onSDGGoalsClick?: () => void;
-  onNewsroomClick?: () => void;
-  onResourcesClick?: () => void;
-  currentPage?: string;
-}
-
-export function Navbar({ onLogoClick, onSolutionsClick, onSolarCalculatorClick, onForUsersClick, onForBuyersClick, onForPartnersClick, onAboutClick, onContactClick, onHowItWorksClick, onCO2SaveClick, onCaseStudiesClick, onSDGGoalsClick, onNewsroomClick, onResourcesClick, currentPage }: NavbarProps) {
+export function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [activeItem, setActiveItem] = useState("Solutions");
   const [solutionsOpen, setSolutionsOpen] = useState(false);
@@ -41,6 +24,7 @@ export function Navbar({ onLogoClick, onSolutionsClick, onSolarCalculatorClick, 
   const [mobileCompanyOpen, setMobileCompanyOpen] = useState(false);
   const [mobileImpactOpen, setMobileImpactOpen] = useState(false);
   const [demoModalOpen, setDemoModalOpen] = useState(false);
+  const location = useLocation();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -50,108 +34,109 @@ export function Navbar({ onLogoClick, onSolutionsClick, onSolarCalculatorClick, 
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // Sync activeItem with currentPage
+  // Update active item based on current path
   useEffect(() => {
-    if (!currentPage) return;
-    
-    // Map pages to their parent menu items
-    if (currentPage === "home" || currentPage === "solutions" || currentPage === "solar-calculator" || currentPage === "for-users" || currentPage === "for-buyers" || currentPage === "for-partners") {
+    const path = location.pathname;
+
+    if (path.startsWith('/solutions')) {
       setActiveItem("Solutions");
-    } else if (currentPage === "about" || currentPage === "contact" || currentPage === "how-it-works") {
+    } else if (path.startsWith('/company')) {
       setActiveItem("Company");
-    } else if (currentPage === "co2-save" || currentPage === "case-studies" || currentPage === "sdg-goals") {
+    } else if (path.startsWith('/impact')) {
       setActiveItem("Impact");
-    } else if (currentPage === "newsroom") {
+    } else if (path.startsWith('/newsroom')) {
       setActiveItem("Newsroom");
-    } else if (currentPage === "resources") {
+    } else if (path.startsWith('/insights')) {
       setActiveItem("Resources");
+    } else if (path === '/') {
+      setActiveItem("Solutions");
     }
-  }, [currentPage]);
-  
+  }, [location]);
+
   const menuItems = ["Solutions", "Company", "Impact", "Newsroom", "Resources"];
-  
+
   const solutionItems = [
-    { 
-      label: "Overview", 
+    {
+      label: "Overview",
       description: "Complete platform capabilities",
       icon: Sparkles,
-      href: "#overview",
+      href: "/solutions/",
       gradient: "from-[#F6B842] to-[#F57B44]"
     },
-    { 
-      label: "Solar Calculator", 
+    {
+      label: "Solar Calculator",
       description: "Size systems & model savings",
       icon: Calculator,
-      href: "#solar-calculator",
+      href: "/solutions/iris/",
       gradient: "from-[#F6B842] to-[#F57B44]"
     },
-    { 
-      label: "For Homeowners", 
+    {
+      label: "For Homeowners",
       description: "Track & earn from clean energy",
       icon: Users,
-      href: "#for-users",
+      href: "/solutions/homeowners/",
       gradient: "from-[#527E5F] to-[#3d5d48]"
     },
-    { 
-      label: "For Businesses", 
+    {
+      label: "For Businesses",
       description: "Purchase verified impact credits",
       icon: ShoppingCart,
-      href: "#for-buyers",
+      href: "/solutions/businesses/",
       gradient: "from-[#F57B44] to-[#e06a33]"
     },
-    { 
-      label: "For Partners", 
+    {
+      label: "For Partners",
       description: "Join the clean energy ecosystem",
       icon: Handshake,
-      href: "#for-partners",
+      href: "/solutions/partners/",
       gradient: "from-[#527E5F] to-[#3d5d48]"
     },
   ];
 
   const companyItems = [
-    { 
-      label: "About Us", 
+    {
+      label: "About Us",
       description: "Our mission and vision",
       icon: Building2,
-      href: "#about-us",
+      href: "/company/about-us/",
       gradient: "from-[#527E5F] to-[#3d5d48]"
     },
-    { 
-      label: "How It Works", 
+    {
+      label: "How It Works",
       description: "Understand our technology",
       icon: Lightbulb,
-      href: "#how-it-works",
+      href: "/company/how-it-works/",
       gradient: "from-[#F6B842] to-[#F57B44]"
     },
-    { 
-      label: "Contact Us", 
+    {
+      label: "Contact Us",
       description: "Get in touch with our team",
       icon: Mail,
-      href: "#contact-us",
+      href: "/company/contact/",
       gradient: "from-[#F57B44] to-[#e06a33]"
     },
   ];
 
   const impactItems = [
-    { 
-      label: "CO2 Savings", 
+    {
+      label: "CO2 Savings",
       description: "Track verified carbon reduction",
       icon: Leaf,
-      href: "#co2-savings",
+      href: "/impact/co2-savings/",
       gradient: "from-[#527E5F] to-[#3d5d48]"
     },
-    { 
-      label: "Case Studies", 
+    {
+      label: "Case Studies",
       description: "Real-world impact stories & reports",
       icon: FileText,
-      href: "#case-studies",
+      href: "/impact/case-studies/",
       gradient: "from-[#F57B44] to-[#e06a33]"
     },
-    { 
-      label: "Alignment with SDG Goals", 
+    {
+      label: "Alignment with SDG Goals",
       description: "Contributing to global sustainability",
       icon: Target,
-      href: "#sdg-goals",
+      href: "/impact/sdg/",
       gradient: "from-[#F6B842] to-[#F57B44]"
     },
   ];
@@ -161,21 +146,20 @@ export function Navbar({ onLogoClick, onSolutionsClick, onSolarCalculatorClick, 
   return (
     <div className="sticky top-0 z-50 w-full overflow-x-hidden">
       {/* Premium navbar with floating menu */}
-      <nav className={`bg-white/98 backdrop-blur-xl transition-all duration-300 w-full ${
-        scrolled 
-          ? "shadow-[0_8px_30px_-8px_rgba(0,0,0,0.12)]" 
+      <nav className={`bg-white/98 backdrop-blur-xl transition-all duration-300 w-full ${scrolled
+          ? "shadow-[0_8px_30px_-8px_rgba(0,0,0,0.12)]"
           : ""
-      }`}>
+        }`}>
         <div className="max-w-7xl mx-auto px-3 sm:px-4 md:px-6 lg:px-8 w-full">
           <div className="flex items-center justify-between h-20 sm:h-24">
             {/* Logo */}
-            <div className="flex-shrink-0 group cursor-pointer" onClick={onLogoClick}>
-              <img 
-                src={ranaLogo} 
-                alt="Rana54" 
+            <Link to="/" className="flex-shrink-0 group cursor-pointer">
+              <img
+                src={ranaLogo}
+                alt="Rana54"
                 className="h-12 sm:h-16 w-auto group-hover:scale-105 transition-transform duration-300"
               />
-            </div>
+            </Link>
 
             {/* Floating menu container */}
             <div className="hidden lg:flex items-center">
@@ -190,11 +174,10 @@ export function Navbar({ onLogoClick, onSolutionsClick, onSolarCalculatorClick, 
                               onClick={() => setActiveItem(item)}
                               className="relative px-5 py-2.5 rounded-xl transition-all duration-300"
                             >
-                              <span className={`relative z-10 tracking-wide transition-colors ${
-                                activeItem === item
+                              <span className={`relative z-10 tracking-wide transition-colors ${activeItem === item
                                   ? "text-white"
                                   : "text-gray-600 hover:text-gray-900"
-                              }`}>
+                                }`}>
                                 {item}
                               </span>
                               {activeItem === item && (
@@ -202,56 +185,42 @@ export function Navbar({ onLogoClick, onSolutionsClick, onSolarCalculatorClick, 
                               )}
                             </button>
                           </DropdownMenuTrigger>
-                          <DropdownMenuContent 
+                          <DropdownMenuContent
                             className="w-80 mt-4 bg-gradient-to-br from-[#527E5F] to-[#3d5d48] backdrop-blur-2xl border border-white/10 rounded-3xl shadow-[0_20px_70px_-15px_rgba(0,0,0,0.4)] p-3 overflow-hidden"
                             align="start"
                           >
                             <div className="space-y-1.5">
-                              {solutionItems.map((solution, index) => {
+                              {solutionItems.map((solution) => {
                                 const Icon = solution.icon;
                                 return (
-                                  <DropdownMenuItem
+                                  <Link
                                     key={solution.label}
-                                    className="group relative px-5 py-4 rounded-2xl cursor-pointer transition-all duration-300 hover:bg-white/95 focus:bg-white/95 overflow-hidden border border-transparent hover:border-white/20 hover:shadow-[0_8px_30px_-8px_rgba(0,0,0,0.2)]"
-                                    onClick={() => {
-                                      setActiveItem("Solutions");
-                                      if (solution.label === "Overview" && onSolutionsClick) {
-                                        onSolutionsClick();
-                                      } else if (solution.label === "Solar Calculator" && onSolarCalculatorClick) {
-                                        onSolarCalculatorClick();
-                                      } else if (solution.label === "For Homeowners" && onForUsersClick) {
-                                        onForUsersClick();
-                                      } else if (solution.label === "For Businesses" && onForBuyersClick) {
-                                        onForBuyersClick();
-                                      } else if (solution.label === "For Partners" && onForPartnersClick) {
-                                        onForPartnersClick();
-                                      }
-                                      setSolutionsOpen(false);
-                                    }}
+                                    to={solution.href}
+                                    onClick={() => setSolutionsOpen(false)}
                                   >
-                                    {/* Subtle overlay on non-hover */}
-                                    <div className="absolute inset-0 bg-white/5 group-hover:bg-transparent transition-all duration-300" />
-                                    
-                                    <div className="relative flex items-start gap-4">
-                                      {/* Icon with gradient background */}
-                                      <div className={`flex-shrink-0 w-12 h-12 rounded-xl bg-gradient-to-br ${solution.gradient} flex items-center justify-center shadow-lg group-hover:shadow-xl group-hover:scale-110 transition-all duration-300`}>
-                                        <Icon className="w-6 h-6 text-white" strokeWidth={2.5} />
-                                      </div>
-                                      
-                                      {/* Text content */}
-                                      <div className="flex-1 min-w-0 pt-0.5">
-                                        <div className="text-white/95 tracking-wide mb-1 group-hover:text-[#527E5F] transition-colors duration-300">
-                                          {solution.label}
+                                    <DropdownMenuItem
+                                      className="group relative px-5 py-4 rounded-2xl cursor-pointer transition-all duration-300 hover:bg-white/95 focus:bg-white/95 overflow-hidden border border-transparent hover:border-white/20 hover:shadow-[0_8px_30px_-8px_rgba(0,0,0,0.2)]"
+                                    >
+                                      <div className="absolute inset-0 bg-white/5 group-hover:bg-transparent transition-all duration-300" />
+
+                                      <div className="relative flex items-start gap-4">
+                                        <div className={`flex-shrink-0 w-12 h-12 rounded-xl bg-gradient-to-br ${solution.gradient} flex items-center justify-center shadow-lg group-hover:shadow-xl group-hover:scale-110 transition-all duration-300`}>
+                                          <Icon className="w-6 h-6 text-white" strokeWidth={2.5} />
                                         </div>
-                                        <div className="text-sm text-white/70 leading-snug group-hover:text-gray-600 transition-colors duration-300">
-                                          {solution.description}
+
+                                        <div className="flex-1 min-w-0 pt-0.5">
+                                          <div className="text-white/95 tracking-wide mb-1 group-hover:text-[#527E5F] transition-colors duration-300">
+                                            {solution.label}
+                                          </div>
+                                          <div className="text-sm text-white/70 leading-snug group-hover:text-gray-600 transition-colors duration-300">
+                                            {solution.description}
+                                          </div>
                                         </div>
+
+                                        <ArrowRight className="w-4 h-4 text-white/60 group-hover:text-[#527E5F] group-hover:translate-x-1 transition-all duration-300 mt-3 flex-shrink-0" strokeWidth={2.5} />
                                       </div>
-                                      
-                                      {/* Arrow indicator */}
-                                      <ArrowRight className="w-4 h-4 text-white/60 group-hover:text-[#527E5F] group-hover:translate-x-1 transition-all duration-300 mt-3 flex-shrink-0" strokeWidth={2.5} />
-                                    </div>
-                                  </DropdownMenuItem>
+                                    </DropdownMenuItem>
+                                  </Link>
                                 );
                               })}
                             </div>
@@ -259,7 +228,7 @@ export function Navbar({ onLogoClick, onSolutionsClick, onSolarCalculatorClick, 
                         </DropdownMenu>
                       );
                     }
-                    
+
                     if (item === "Company") {
                       return (
                         <DropdownMenu key={item} open={companyOpen} onOpenChange={setCompanyOpen}>
@@ -268,11 +237,10 @@ export function Navbar({ onLogoClick, onSolutionsClick, onSolarCalculatorClick, 
                               onClick={() => setActiveItem(item)}
                               className="relative px-5 py-2.5 rounded-xl transition-all duration-300"
                             >
-                              <span className={`relative z-10 tracking-wide transition-colors ${
-                                activeItem === item
+                              <span className={`relative z-10 tracking-wide transition-colors ${activeItem === item
                                   ? "text-white"
                                   : "text-gray-600 hover:text-gray-900"
-                              }`}>
+                                }`}>
                                 {item}
                               </span>
                               {activeItem === item && (
@@ -280,52 +248,42 @@ export function Navbar({ onLogoClick, onSolutionsClick, onSolarCalculatorClick, 
                               )}
                             </button>
                           </DropdownMenuTrigger>
-                          <DropdownMenuContent 
+                          <DropdownMenuContent
                             className="w-80 mt-4 bg-gradient-to-br from-[#527E5F] to-[#3d5d48] backdrop-blur-2xl border border-white/10 rounded-3xl shadow-[0_20px_70px_-15px_rgba(0,0,0,0.4)] p-3 overflow-hidden"
                             align="start"
                           >
                             <div className="space-y-1.5">
-                              {companyItems.map((company, index) => {
+                              {companyItems.map((company) => {
                                 const Icon = company.icon;
                                 return (
-                                  <DropdownMenuItem
+                                  <Link
                                     key={company.label}
-                                    className="group relative px-5 py-4 rounded-2xl cursor-pointer transition-all duration-300 hover:bg-white/95 focus:bg-white/95 overflow-hidden border border-transparent hover:border-white/20 hover:shadow-[0_8px_30px_-8px_rgba(0,0,0,0.2)]"
-                                    onClick={() => {
-                                      setActiveItem("Company");
-                                      if (company.label === "About Us" && onAboutClick) {
-                                        onAboutClick();
-                                      } else if (company.label === "Contact Us" && onContactClick) {
-                                        onContactClick();
-                                      } else if (company.label === "How It Works" && onHowItWorksClick) {
-                                        onHowItWorksClick();
-                                      }
-                                      setCompanyOpen(false);
-                                    }}
+                                    to={company.href}
+                                    onClick={() => setCompanyOpen(false)}
                                   >
-                                    {/* Subtle overlay on non-hover */}
-                                    <div className="absolute inset-0 bg-white/5 group-hover:bg-transparent transition-all duration-300" />
-                                    
-                                    <div className="relative flex items-start gap-4">
-                                      {/* Icon with gradient background */}
-                                      <div className={`flex-shrink-0 w-12 h-12 rounded-xl bg-gradient-to-br ${company.gradient} flex items-center justify-center shadow-lg group-hover:shadow-xl group-hover:scale-110 transition-all duration-300`}>
-                                        <Icon className="w-6 h-6 text-white" strokeWidth={2.5} />
-                                      </div>
-                                      
-                                      {/* Text content */}
-                                      <div className="flex-1 min-w-0 pt-0.5">
-                                        <div className="text-white/95 tracking-wide mb-1 group-hover:text-[#527E5F] transition-colors duration-300">
-                                          {company.label}
+                                    <DropdownMenuItem
+                                      className="group relative px-5 py-4 rounded-2xl cursor-pointer transition-all duration-300 hover:bg-white/95 focus:bg-white/95 overflow-hidden border border-transparent hover:border-white/20 hover:shadow-[0_8px_30px_-8px_rgba(0,0,0,0.2)]"
+                                    >
+                                      <div className="absolute inset-0 bg-white/5 group-hover:bg-transparent transition-all duration-300" />
+
+                                      <div className="relative flex items-start gap-4">
+                                        <div className={`flex-shrink-0 w-12 h-12 rounded-xl bg-gradient-to-br ${company.gradient} flex items-center justify-center shadow-lg group-hover:shadow-xl group-hover:scale-110 transition-all duration-300`}>
+                                          <Icon className="w-6 h-6 text-white" strokeWidth={2.5} />
                                         </div>
-                                        <div className="text-sm text-white/70 leading-snug group-hover:text-gray-600 transition-colors duration-300">
-                                          {company.description}
+
+                                        <div className="flex-1 min-w-0 pt-0.5">
+                                          <div className="text-white/95 tracking-wide mb-1 group-hover:text-[#527E5F] transition-colors duration-300">
+                                            {company.label}
+                                          </div>
+                                          <div className="text-sm text-white/70 leading-snug group-hover:text-gray-600 transition-colors duration-300">
+                                            {company.description}
+                                          </div>
                                         </div>
+
+                                        <ArrowRight className="w-4 h-4 text-white/60 group-hover:text-[#527E5F] group-hover:translate-x-1 transition-all duration-300 mt-3 flex-shrink-0" strokeWidth={2.5} />
                                       </div>
-                                      
-                                      {/* Arrow indicator */}
-                                      <ArrowRight className="w-4 h-4 text-white/60 group-hover:text-[#527E5F] group-hover:translate-x-1 transition-all duration-300 mt-3 flex-shrink-0" strokeWidth={2.5} />
-                                    </div>
-                                  </DropdownMenuItem>
+                                    </DropdownMenuItem>
+                                  </Link>
                                 );
                               })}
                             </div>
@@ -333,7 +291,7 @@ export function Navbar({ onLogoClick, onSolutionsClick, onSolarCalculatorClick, 
                         </DropdownMenu>
                       );
                     }
-                    
+
                     if (item === "Impact") {
                       return (
                         <DropdownMenu key={item} open={impactOpen} onOpenChange={setImpactOpen}>
@@ -342,11 +300,10 @@ export function Navbar({ onLogoClick, onSolutionsClick, onSolarCalculatorClick, 
                               onClick={() => setActiveItem(item)}
                               className="relative px-5 py-2.5 rounded-xl transition-all duration-300"
                             >
-                              <span className={`relative z-10 tracking-wide transition-colors ${
-                                activeItem === item
+                              <span className={`relative z-10 tracking-wide transition-colors ${activeItem === item
                                   ? "text-white"
                                   : "text-gray-600 hover:text-gray-900"
-                              }`}>
+                                }`}>
                                 {item}
                               </span>
                               {activeItem === item && (
@@ -354,52 +311,42 @@ export function Navbar({ onLogoClick, onSolutionsClick, onSolarCalculatorClick, 
                               )}
                             </button>
                           </DropdownMenuTrigger>
-                          <DropdownMenuContent 
+                          <DropdownMenuContent
                             className="w-80 mt-4 bg-gradient-to-br from-[#527E5F] to-[#3d5d48] backdrop-blur-2xl border border-white/10 rounded-3xl shadow-[0_20px_70px_-15px_rgba(0,0,0,0.4)] p-3 overflow-hidden"
                             align="start"
                           >
                             <div className="space-y-1.5">
-                              {impactItems.map((impact, index) => {
+                              {impactItems.map((impact) => {
                                 const Icon = impact.icon;
                                 return (
-                                  <DropdownMenuItem
+                                  <Link
                                     key={impact.label}
-                                    className="group relative px-5 py-4 rounded-2xl cursor-pointer transition-all duration-300 hover:bg-white/95 focus:bg-white/95 overflow-hidden border border-transparent hover:border-white/20 hover:shadow-[0_8px_30px_-8px_rgba(0,0,0,0.2)]"
-                                    onClick={() => {
-                                      setActiveItem("Impact");
-                                      if (impact.label === "CO2 Savings" && onCO2SaveClick) {
-                                        onCO2SaveClick();
-                                      } else if (impact.label === "Case Studies" && onCaseStudiesClick) {
-                                        onCaseStudiesClick();
-                                      } else if (impact.label === "Alignment with SDG Goals" && onSDGGoalsClick) {
-                                        onSDGGoalsClick();
-                                      }
-                                      setImpactOpen(false);
-                                    }}
+                                    to={impact.href}
+                                    onClick={() => setImpactOpen(false)}
                                   >
-                                    {/* Subtle overlay on non-hover */}
-                                    <div className="absolute inset-0 bg-white/5 group-hover:bg-transparent transition-all duration-300" />
-                                    
-                                    <div className="relative flex items-start gap-4">
-                                      {/* Icon with gradient background */}
-                                      <div className={`flex-shrink-0 w-12 h-12 rounded-xl bg-gradient-to-br ${impact.gradient} flex items-center justify-center shadow-lg group-hover:shadow-xl group-hover:scale-110 transition-all duration-300`}>
-                                        <Icon className="w-6 h-6 text-white" strokeWidth={2.5} />
-                                      </div>
-                                      
-                                      {/* Text content */}
-                                      <div className="flex-1 min-w-0 pt-0.5">
-                                        <div className="text-white/95 tracking-wide mb-1 group-hover:text-[#527E5F] transition-colors duration-300">
-                                          {impact.label}
+                                    <DropdownMenuItem
+                                      className="group relative px-5 py-4 rounded-2xl cursor-pointer transition-all duration-300 hover:bg-white/95 focus:bg-white/95 overflow-hidden border border-transparent hover:border-white/20 hover:shadow-[0_8px_30px_-8px_rgba(0,0,0,0.2)]"
+                                    >
+                                      <div className="absolute inset-0 bg-white/5 group-hover:bg-transparent transition-all duration-300" />
+
+                                      <div className="relative flex items-start gap-4">
+                                        <div className={`flex-shrink-0 w-12 h-12 rounded-xl bg-gradient-to-br ${impact.gradient} flex items-center justify-center shadow-lg group-hover:shadow-xl group-hover:scale-110 transition-all duration-300`}>
+                                          <Icon className="w-6 h-6 text-white" strokeWidth={2.5} />
                                         </div>
-                                        <div className="text-sm text-white/70 leading-snug group-hover:text-gray-600 transition-colors duration-300">
-                                          {impact.description}
+
+                                        <div className="flex-1 min-w-0 pt-0.5">
+                                          <div className="text-white/95 tracking-wide mb-1 group-hover:text-[#527E5F] transition-colors duration-300">
+                                            {impact.label}
+                                          </div>
+                                          <div className="text-sm text-white/70 leading-snug group-hover:text-gray-600 transition-colors duration-300">
+                                            {impact.description}
+                                          </div>
                                         </div>
+
+                                        <ArrowRight className="w-4 h-4 text-white/60 group-hover:text-[#527E5F] group-hover:translate-x-1 transition-all duration-300 mt-3 flex-shrink-0" strokeWidth={2.5} />
                                       </div>
-                                      
-                                      {/* Arrow indicator */}
-                                      <ArrowRight className="w-4 h-4 text-white/60 group-hover:text-[#527E5F] group-hover:translate-x-1 transition-all duration-300 mt-3 flex-shrink-0" strokeWidth={2.5} />
-                                    </div>
-                                  </DropdownMenuItem>
+                                    </DropdownMenuItem>
+                                  </Link>
                                 );
                               })}
                             </div>
@@ -407,31 +354,24 @@ export function Navbar({ onLogoClick, onSolutionsClick, onSolarCalculatorClick, 
                         </DropdownMenu>
                       );
                     }
-                    
+
                     return (
-                      <button
+                      <Link
                         key={item}
-                        onClick={() => {
-                          setActiveItem(item);
-                          if (item === "Newsroom" && onNewsroomClick) {
-                            onNewsroomClick();
-                          } else if (item === "Resources" && onResourcesClick) {
-                            onResourcesClick();
-                          }
-                        }}
+                        to={item === "Newsroom" ? "/newsroom/" : "/insights/"}
+                        onClick={() => setActiveItem(item)}
                         className="relative px-5 py-2.5 rounded-xl transition-all duration-300"
                       >
-                        <span className={`relative z-10 tracking-wide transition-colors ${
-                          activeItem === item
+                        <span className={`relative z-10 tracking-wide transition-colors ${activeItem === item
                             ? "text-white"
                             : "text-gray-600 hover:text-gray-900"
-                        }`}>
+                          }`}>
                           {item}
                         </span>
                         {activeItem === item && (
                           <div className="absolute inset-0 bg-gradient-to-r from-[#527E5F] to-[#3d5d48] rounded-xl shadow-lg" />
                         )}
-                      </button>
+                      </Link>
                     );
                   })}
                 </div>
@@ -440,7 +380,7 @@ export function Navbar({ onLogoClick, onSolutionsClick, onSolarCalculatorClick, 
 
             {/* Desktop CTA button */}
             <div className="hidden lg:flex items-center">
-              <Button 
+              <Button
                 onClick={() => setDemoModalOpen(true)}
                 className="relative overflow-hidden bg-gradient-to-r from-[#F57B44] to-[#e06a33] hover:from-[#e06a33] hover:to-[#F57B44] text-white px-8 py-6 rounded-xl shadow-lg hover:shadow-[0_12px_28px_-8px_rgba(245,123,68,0.5)] transition-all duration-300 group"
               >
@@ -457,9 +397,9 @@ export function Navbar({ onLogoClick, onSolutionsClick, onSolarCalculatorClick, 
             <div className="flex lg:hidden items-center">
               <Sheet open={mobileMenuOpen} onOpenChange={setMobileMenuOpen}>
                 <SheetTrigger asChild>
-                  <Button 
-                    variant="ghost" 
-                    size="icon" 
+                  <Button
+                    variant="ghost"
+                    size="icon"
                     className="h-12 w-12 relative group"
                   >
                     <div className="absolute inset-0 bg-gradient-to-br from-[#527E5F]/10 to-[#F57B44]/10 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity" />
@@ -476,21 +416,23 @@ export function Navbar({ onLogoClick, onSolutionsClick, onSolarCalculatorClick, 
                     <div className="absolute top-0 right-0 w-40 h-40 bg-[#F6B842]/10 rounded-full blur-3xl" />
                     <div className="absolute bottom-1/3 left-0 w-32 h-32 bg-[#F57B44]/10 rounded-full blur-3xl" />
                     <div className="absolute top-1/2 right-0 w-28 h-28 bg-white/5 rounded-full blur-2xl" />
-                    
+
                     {/* Premium mobile menu header */}
                     <div className="relative px-6 py-8">
                       <div className="flex items-center justify-between">
-                        <img src={ranaLogo} alt="Rana54" className="h-14 w-auto brightness-0 invert" />
-                        <Button 
-                          variant="ghost" 
-                          size="icon" 
+                        <Link to="/" onClick={() => setMobileMenuOpen(false)}>
+                          <img src={ranaLogo} alt="Rana54" className="h-14 w-auto brightness-0 invert" />
+                        </Link>
+                        <Button
+                          variant="ghost"
+                          size="icon"
                           onClick={() => setMobileMenuOpen(false)}
                           className="h-10 w-10 text-white hover:bg-white/20 rounded-xl transition-colors"
                         >
                           <X className="h-5 w-5" />
                         </Button>
                       </div>
-                      
+
                       {/* Tagline */}
                       <p className="mt-4 text-white/90 text-sm tracking-wide">
                         Verified Clean Energy Impact
@@ -514,22 +456,10 @@ export function Navbar({ onLogoClick, onSolutionsClick, onSolarCalculatorClick, 
                           {solutionItems.map((solution) => {
                             const Icon = solution.icon;
                             return (
-                              <button
+                              <Link
                                 key={solution.label}
-                                onClick={() => {
-                                  if (solution.label === "Overview" && onSolutionsClick) {
-                                    onSolutionsClick();
-                                  } else if (solution.label === "Solar Calculator" && onSolarCalculatorClick) {
-                                    onSolarCalculatorClick();
-                                  } else if (solution.label === "For Homeowners" && onForUsersClick) {
-                                    onForUsersClick();
-                                  } else if (solution.label === "For Businesses" && onForBuyersClick) {
-                                    onForBuyersClick();
-                                  } else if (solution.label === "For Partners" && onForPartnersClick) {
-                                    onForPartnersClick();
-                                  }
-                                  setMobileMenuOpen(false);
-                                }}
+                                to={solution.href}
+                                onClick={() => setMobileMenuOpen(false)}
                                 className="group relative flex items-start gap-3 w-full px-4 py-3.5 rounded-xl bg-white/5 hover:bg-white border border-white/10 hover:border-white/20 hover:shadow-lg transition-all text-left"
                               >
                                 <div className={`flex-shrink-0 w-11 h-11 rounded-xl bg-gradient-to-br ${solution.gradient} flex items-center justify-center shadow-sm group-hover:shadow-md group-hover:scale-105 transition-all`}>
@@ -540,7 +470,7 @@ export function Navbar({ onLogoClick, onSolutionsClick, onSolarCalculatorClick, 
                                   <div className="text-xs text-white/70 leading-snug">{solution.description}</div>
                                 </div>
                                 <ArrowRight className="w-4 h-4 text-white/50 group-hover:text-white group-hover:translate-x-0.5 transition-all mt-3 opacity-0 group-hover:opacity-100" />
-                              </button>
+                              </Link>
                             );
                           })}
                         </CollapsibleContent>
@@ -561,18 +491,10 @@ export function Navbar({ onLogoClick, onSolutionsClick, onSolarCalculatorClick, 
                           {companyItems.map((company) => {
                             const Icon = company.icon;
                             return (
-                              <button
+                              <Link
                                 key={company.label}
-                                onClick={() => {
-                                  if (company.label === "About Us" && onAboutClick) {
-                                    onAboutClick();
-                                  } else if (company.label === "Contact Us" && onContactClick) {
-                                    onContactClick();
-                                  } else if (company.label === "How It Works" && onHowItWorksClick) {
-                                    onHowItWorksClick();
-                                  }
-                                  setMobileMenuOpen(false);
-                                }}
+                                to={company.href}
+                                onClick={() => setMobileMenuOpen(false)}
                                 className="group relative flex items-start gap-3 w-full px-4 py-3.5 rounded-xl bg-white/5 hover:bg-white border border-white/10 hover:border-white/20 hover:shadow-lg transition-all text-left"
                               >
                                 <div className={`flex-shrink-0 w-11 h-11 rounded-xl bg-gradient-to-br ${company.gradient} flex items-center justify-center shadow-sm group-hover:shadow-md group-hover:scale-105 transition-all`}>
@@ -583,7 +505,7 @@ export function Navbar({ onLogoClick, onSolutionsClick, onSolarCalculatorClick, 
                                   <div className="text-xs text-white/70 leading-snug">{company.description}</div>
                                 </div>
                                 <ArrowRight className="w-4 h-4 text-white/50 group-hover:text-white group-hover:translate-x-0.5 transition-all mt-3 opacity-0 group-hover:opacity-100" />
-                              </button>
+                              </Link>
                             );
                           })}
                         </CollapsibleContent>
@@ -604,18 +526,10 @@ export function Navbar({ onLogoClick, onSolutionsClick, onSolarCalculatorClick, 
                           {impactItems.map((impact) => {
                             const Icon = impact.icon;
                             return (
-                              <button
+                              <Link
                                 key={impact.label}
-                                onClick={() => {
-                                  if (impact.label === "CO2 Savings" && onCO2SaveClick) {
-                                    onCO2SaveClick();
-                                  } else if (impact.label === "Case Studies" && onCaseStudiesClick) {
-                                    onCaseStudiesClick();
-                                  } else if (impact.label === "Alignment with SDG Goals" && onSDGGoalsClick) {
-                                    onSDGGoalsClick();
-                                  }
-                                  setMobileMenuOpen(false);
-                                }}
+                                to={impact.href}
+                                onClick={() => setMobileMenuOpen(false)}
                                 className="group relative flex items-start gap-3 w-full px-4 py-3.5 rounded-xl bg-white/5 hover:bg-white border border-white/10 hover:border-white/20 hover:shadow-lg transition-all text-left"
                               >
                                 <div className={`flex-shrink-0 w-11 h-11 rounded-xl bg-gradient-to-br ${impact.gradient} flex items-center justify-center shadow-sm group-hover:shadow-md group-hover:scale-105 transition-all`}>
@@ -626,18 +540,16 @@ export function Navbar({ onLogoClick, onSolutionsClick, onSolarCalculatorClick, 
                                   <div className="text-xs text-white/70 leading-snug">{impact.description}</div>
                                 </div>
                                 <ArrowRight className="w-4 h-4 text-white/50 group-hover:text-white group-hover:translate-x-0.5 transition-all mt-3 opacity-0 group-hover:opacity-100" />
-                              </button>
+                              </Link>
                             );
                           })}
                         </CollapsibleContent>
                       </Collapsible>
 
                       {/* Newsroom - Standalone */}
-                      <button
-                        onClick={() => {
-                          if (onNewsroomClick) onNewsroomClick();
-                          setMobileMenuOpen(false);
-                        }}
+                      <Link
+                        to="/newsroom/"
+                        onClick={() => setMobileMenuOpen(false)}
                         className="group relative flex items-center justify-between w-full px-5 py-4 rounded-2xl bg-white/10 hover:bg-white/20 backdrop-blur-sm transition-all text-left border border-white/10"
                       >
                         <div className="flex items-center gap-3">
@@ -647,14 +559,12 @@ export function Navbar({ onLogoClick, onSolutionsClick, onSolarCalculatorClick, 
                           <span className="text-white tracking-wide text-sm sm:text-base">Newsroom</span>
                         </div>
                         <ArrowRight className="w-4 h-4 text-white/70 group-hover:text-white group-hover:translate-x-0.5 transition-all" />
-                      </button>
+                      </Link>
 
                       {/* Resources - Standalone */}
-                      <button
-                        onClick={() => {
-                          if (onResourcesClick) onResourcesClick();
-                          setMobileMenuOpen(false);
-                        }}
+                      <Link
+                        to="/insights/"
+                        onClick={() => setMobileMenuOpen(false)}
                         className="group relative flex items-center justify-between w-full px-5 py-4 rounded-2xl bg-white/10 hover:bg-white/20 backdrop-blur-sm transition-all text-left border border-white/10"
                       >
                         <div className="flex items-center gap-3">
@@ -664,12 +574,12 @@ export function Navbar({ onLogoClick, onSolutionsClick, onSolarCalculatorClick, 
                           <span className="text-white tracking-wide text-sm sm:text-base">Resources</span>
                         </div>
                         <ArrowRight className="w-4 h-4 text-white/70 group-hover:text-white group-hover:translate-x-0.5 transition-all" />
-                      </button>
+                      </Link>
                     </div>
 
                     {/* Premium Mobile CTA */}
                     <div className="relative p-6 mt-4 border-t border-white/10">
-                      <Button 
+                      <Button
                         onClick={() => {
                           setDemoModalOpen(true);
                           setMobileMenuOpen(false);
@@ -682,7 +592,7 @@ export function Navbar({ onLogoClick, onSolutionsClick, onSolarCalculatorClick, 
                           <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" strokeWidth={2.5} />
                         </span>
                       </Button>
-                      
+
                       {/* Quick links */}
                       <div className="mt-4 flex items-center justify-center gap-4 text-xs text-white/70">
                         <button className="hover:text-white transition-colors">Privacy</button>
