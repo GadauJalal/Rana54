@@ -2,7 +2,7 @@ import { Card } from "../ui/card";
 import { Button } from "../ui/button";
 import { ImageWithFallback } from "../figma/ImageWithFallback";
 import { ArrowRight, Zap } from "lucide-react";
-import Video from "../../assets/herovid.mp4";
+import Video from "../../assets/herovid1.mp4";
 
 export function HeroCard() {
   return (
