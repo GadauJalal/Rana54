@@ -2,7 +2,6 @@ import { Card } from "../ui/card";
 import { Button } from "../ui/button";
 import { ImageWithFallback } from "../figma/ImageWithFallback";
 import { ArrowRight, Zap } from "lucide-react";
-import Video from "../../assets/herovid1.mp4";
 
 export function HeroCard() {
   return (
@@ -68,14 +67,21 @@ export function HeroCard() {
             <div className="relative bg-white p-3 rounded-[2rem] shadow-[0_30px_90px_-15px_rgba(0,0,0,0.25)]">
               <div className="relative rounded-[1.5rem] overflow-hidden aspect-[16/9]">
                 <video
-                  src={Video}
                   autoPlay
                   muted
                   loop
                   playsInline
-                  webkit-playsinline="true"
+                  preload="auto"
+                  disablePictureInPicture
                   className="w-full h-full object-cover"
-                />
+                  onError={(e) => {
+                    console.error("Video failed to load:", e);
+                    e.currentTarget.style.display = "none";
+                  }}
+                >
+                  <source src="/herovid1.mp4" type="video/mp4" />
+                  Your browser does not support the video tag.
+                </video>
                 <div className="absolute inset-0 bg-gradient-to-t from-black/10 via-transparent to-transparent" />
 
               </div>
