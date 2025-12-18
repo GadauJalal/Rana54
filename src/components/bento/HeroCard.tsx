@@ -67,9 +67,17 @@ export function HeroCard() {
             <div className="absolute -inset-8 bg-gradient-to-br from-[#527E5F] via-[#F57B44] to-[#F6B842] rounded-[2.5rem] blur-3xl opacity-20 group-hover:opacity-30 transition-opacity duration-700" />
             <div className="relative bg-white p-3 rounded-[2rem] shadow-[0_30px_90px_-15px_rgba(0,0,0,0.25)]">
               <div className="relative rounded-[1.5rem] overflow-hidden aspect-[16/9]">
-                <video src={Video} autoPlay muted loop playsInline className="w-full h-full object-cover" />
+                <video
+                  src={Video}
+                  autoPlay
+                  muted
+                  loop
+                  playsInline
+                  webkit-playsinline="true"
+                  className="w-full h-full object-cover"
+                />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/10 via-transparent to-transparent" />
-                
+
               </div>
             </div>
           </div>
